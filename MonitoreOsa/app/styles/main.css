@@ -2,3 +2,31 @@
   padding-top: 10px;
   padding-bottom: 10px;
 }
+.titulo-perfil{
+  color:#83CF69;
+}
+.btn-perfil{
+  background-color: Transparent;
+  position: fixed;
+    background-repeat:no-repeat;
+    border: solid 1.3px;
+    cursor:pointer;
+    overflow: hidden;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    font-size: 16px;
+    color:#83CF69;
+    border-radius: 10px;
+    margin-left: 80px;
+}
+.prueba{
+  text-align: center;
+}
+
+@media (max-width: 500px) {
+  .prueba{
+    text-align: left;
+  }
+}
