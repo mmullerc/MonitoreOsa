@@ -7,7 +7,6 @@
 }
 .btn-perfil{
   background-color: Transparent;
-  position: fixed;
     background-repeat:no-repeat;
     border: solid 1.3px;
     cursor:pointer;
@@ -20,6 +19,7 @@
     color:#83CF69;
     border-radius: 10px;
     margin-left: 80px;
+    float: right;
 }
 .prueba{
   text-align: center;
