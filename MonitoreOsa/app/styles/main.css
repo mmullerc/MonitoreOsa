@@ -30,3 +30,33 @@
     text-align: left;
   }
 }
+.list-clases{
+  color: #83CF69;
+  font-size: 24px;
+  border-bottom: solid 2px;
+  margin-top: 20px;
+  padding-bottom: 10px;
+  font-family:sans-serif;
+}
+.icono-flecha{
+  color: #83CF69;
+  float:right;
+}
+.nav-bar-green{
+  background-color:#83CF69 !important;
+}
+.tab-item.tab-item-active, .tab-item.active, .tab-item.activated {
+    background-color: white !important;
+    color: #83CF69;
+}
+.tab-item{
+  color: white;
+  background-color:#63c342 !important;
+}
+.titulo-clases{
+  font-size: 32px !important;
+  font-family: serif;
+  text-align: left !important;
+  float: left;
+  color: white;
+}
