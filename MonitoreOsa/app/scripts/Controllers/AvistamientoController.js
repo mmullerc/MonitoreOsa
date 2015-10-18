@@ -30,9 +30,13 @@ angular.module('MonitoreOsa.Avistamientos', [])
 
 //Aqui estan los controladores de cada clase
 
-.controller('MamiferosCtrl', function($scope, $state) {
+.controller('MamiferosCtrl', function($scope, $state, $rootScope, AnimalService) {
 
-  //TODO Mamiferos Controller
+  $scope.infoArdillaColiroja = function(){
+
+    AnimalService.setAnimal("ardillaColiroja");
+    $state.go('tab.info-especie');
+  }
 
 })
 
@@ -60,4 +64,7 @@ angular.module('MonitoreOsa.Avistamientos', [])
 .controller('PlantasCtrl', function($scope, $state) {
 
 
+})
+.config(function($ionicConfigProvider) {
+    $ionicConfigProvider.backButton.text('').icon('ion-ios-arrow-back');
 });

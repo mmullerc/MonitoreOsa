@@ -1,7 +1,158 @@
-<ion-view view-title="Mamiferos">
+<ion-view>
+  <ion-nav-title class="titulo-animales">
+     Mamiferos
+   </ion-nav-title>
+   <ion-nav-bar>
+  <ion-nav-back-button>
+  </ion-nav-back-button>
+</ion-nav-bar>
   <ion-content class="background-content">
+    <div class="card search-card">
+      <div class="bar bar-header item-input-inset">
+             <label class="item-input-wrapper textbox-search">
+                 <i class="icon ion-ios-search-strong placeholder-icon"></i>
+                 <input type="search" placeholder="Buscar">
+             </label>
+      </div>
+     </div>
     <div class="card">
-    <h1>Mamiferos</h1>
-    </div>
+      <div class="list list-inset" ng-click="infoArdillaColiroja()">
+        <a class="item item-avatar item-thumbnail-left">
+          <img src="images/ardilla_coliroja.png">
+          <h2>Ardilla coliroja</h2>
+          <p>Sciurus granatensis</p>
+        </a>
+        <a class="item item-avatar item-thumbnail-left">
+          <img src="images/ardilla_alfaro.png">
+          <h2>Ardilla enana de Alfaro</h2>
+          <p>Microsciurus alfari</p>
+        </a>
+        <a class="item item-avatar item-thumbnail-left">
+          <img src="images/cabro_de_monte.png">
+          <h2>Cabro de monte</h2>
+          <p>Mazama temana</p>
+        </a>
+        <a class="item item-avatar item-thumbnail-left">
+          <img src="images/chancho_de_monte.png">
+          <h2>Chancho de monte</h2>
+          <p>Tayassu pecari</p>
+        </a>
+        <a class="item item-avatar item-thumbnail-left">
+          <img src="images/danta.png">
+          <h2>Danta</h2>
+          <p>Tapirus bairdii</p>
+        </a>
+        <a class="item item-avatar item-thumbnail-left">
+          <img src="images/Guatusa.png">
+          <h2>Guatusa o Cherenga</h2>
+          <p>Dasyprocta punctata</p>
+        </a>
+        <a class="item item-avatar item-thumbnail-left">
+          <img src="images/mapache_norteño.png">
+          <h2>Mapache Norteño</h2>
+          <p>Procyon lotor</p>
+        </a>
+        <a class="item item-avatar item-thumbnail-left">
+          <img src="images/martilla.png">
+          <h2>Martilla</h2>
+          <p>Potos flavus</p>
+        </a>
+        <a class="item item-avatar item-thumbnail-left">
+          <img src="images/mono_araña.png">
+          <h2>Mono araña</h2>
+          <p>Ateles geoffroyi</p>
+        </a>
+        <a class="item item-avatar item-thumbnail-left">
+          <img src="images/mono_tití.png">
+          <h2>Mono ardilla o tití </h2>
+          <p>Saimiri oerstedii</p>
+        </a>
+        <a class="item item-avatar item-thumbnail-left">
+          <img src="images/mono_cariblanco.png">
+          <h2>Mono cariblanco</h2>
+          <p>Cebus capucinus</p>
+        </a>
+        <a class="item item-avatar item-thumbnail-left">
+          <img src="images/mono_congo.png">
+          <h2>Mono congo</h2>
+          <p>Alouatta palliata</p>
+        </a>
+        <a class="item item-avatar item-thumbnail-left">
+          <img src="images/murcielago_de_tienda.png">
+          <h2>Murciélago de tienda</h2>
+          <p>Uroderma bilobatum</p>
+        </a>
+        <a class="item item-avatar item-thumbnail-left">
+          <img src="images/murcielago_de_ventosas.png">
+          <h2>Murciélago de ventosas</h2>
+          <p>Thyroptera tricolor</p>
+        </a>
+        <a class="item item-avatar item-thumbnail-left">
+          <img src="images/murcielago_lineas_blancas.png">
+          <h2>Murciélago-saco de líneas blancas</h2>
+          <p>Saccopteryx bilineata</p>
+        </a>
+        <a class="item item-avatar item-thumbnail-left">
+          <img src="images/nutria_neotropical.png">
+          <h2>Nutria neotropical</h2>
+          <p>Lontra longicaudis</p>
+        </a>
+        <a class="item item-avatar item-thumbnail-left">
+          <img src="images/ocelote.png">
+          <h2>Ocelote o Manigordo</h2>
+          <p>Leopardus pardalis</p>
+        </a>
+        <a class="item item-avatar item-thumbnail-left">
+          <img src="images/oso_hormiguero.png">
+          <h2>Oso hormiguero</h2>
+          <p>Tamandua mexicana</p>
+        </a>
+        <a class="item item-avatar item-thumbnail-left">
+          <img src="images/perezoso_dos_dedos.png">
+          <h2>Perezoso de dos dedos</h2>
+          <p>Choloepus hoffmanni</p>
+        </a>
+        <a class="item item-avatar item-thumbnail-left">
+          <img src="images/perezoso_tres_dedos.png">
+          <h2>Perezoso de tres dedos</h2>
+          <p>Bradypus variegatus</p>
+        </a>
+        <a class="item item-avatar item-thumbnail-left">
+          <img src="images/pizote.png">
+          <h2>Pizote</h2>
+          <p>Nasua narica</p>
+        </a>
+        <a class="item item-avatar item-thumbnail-left">
+          <img src="images/puma.png">
+          <h2>Puma</h2>
+          <p>Puma concolor</p>
+        </a>
+        <a class="item item-avatar item-thumbnail-left">
+          <img src="images/saino.png">
+          <h2>Saíno</h2>
+          <p>Tayassu pecari</p>
+        </a>
+        <a class="item item-avatar item-thumbnail-left">
+          <img src="images/serafin.png">
+          <h2>Serafín del platanar</h2>
+          <p>Cyclopes didactylus</p>
+        </a>
+        <a class="item item-avatar item-thumbnail-left">
+          <img src="images/tepezcuintle.png">
+          <h2>Tepezcuintle</h2>
+          <p>Cuniculus paca</p>
+        </a>
+        <a class="item item-avatar item-thumbnail-left">
+          <img src="images/tolomuco.png">
+          <h2>Tolomuco</h2>
+          <p>Eira barbara</p>
+        </a>
+        <a class="item item-avatar item-thumbnail-left">
+          <img src="images/zorro_pelon.png">
+          <h2>Zorro Pelón</h2>
+          <p>Didelphis marsupialis</p>
+        </a>
+      </div>
+  </div>
   </ion-content>
 </ion-view>
