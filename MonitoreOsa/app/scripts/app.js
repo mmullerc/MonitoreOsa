@@ -4,7 +4,7 @@
 // 'MonitoreOsa' is the name of this angular module example (also set in a <body> attribute in index.html)
 
 angular.module('MonitoreOsa', ['ionic','MonitoreOsa.services',
-'MonitoreOsa.InicioCtrl','MonitoreOsa.HistorialCtrl','MonitoreOsa.PerfilCtrl','MonitoreOsa.AvistamientoCtrl'])
+'MonitoreOsa.InicioCtrl','MonitoreOsa.HistorialCtrl','MonitoreOsa.PerfilCtrl','MonitoreOsa.Avistamientos'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -73,6 +73,60 @@ angular.module('MonitoreOsa', ['ionic','MonitoreOsa.services',
       'avistamientos': {
         templateUrl: 'templates/avistamientos.html',
         controller: 'AvistamientoCtrl'
+      }
+    }
+  })
+  .state('tab.mamiferos', {
+    url: '/mamiferos',
+    views: {
+      'avistamientos': {
+        templateUrl: 'templates/mamiferos.html',
+        controller: 'MamiferosCtrl'
+      }
+    }
+  })
+  .state('tab.reptiles', {
+    url: '/reptiles',
+    views: {
+      'avistamientos': {
+        templateUrl: 'templates/reptiles.html',
+        controller: 'ReptilesCtrl'
+      }
+    }
+  })
+  .state('tab.aves', {
+    url: '/aves',
+    views: {
+      'avistamientos': {
+        templateUrl: 'templates/aves.html',
+        controller: 'AvesCtrl'
+      }
+    }
+  })
+  .state('tab.peces', {
+    url: '/peces',
+    views: {
+      'avistamientos': {
+        templateUrl: 'templates/peces.html',
+        controller: 'PecesCtrl'
+      }
+    }
+  })
+  .state('tab.anfibios', {
+    url: '/anfibios',
+    views: {
+      'avistamientos': {
+        templateUrl: 'templates/anfibios.html',
+        controller: 'AnfibiosCtrl'
+      }
+    }
+  })
+  .state('tab.plantas', {
+    url: '/plantas',
+    views: {
+      'avistamientos': {
+        templateUrl: 'templates/plantas.html',
+        controller: 'PlantasCtrl'
       }
     }
   });
