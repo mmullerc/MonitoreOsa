@@ -54,9 +54,17 @@
   background-color:#63c342 !important;
 }
 .titulo-clases{
-  font-size: 32px !important;
-  font-family: serif;
+  font-size: 26px !important;
   text-align: left !important;
   float: left;
   color: white;
+}
+.titulo-animales{
+  font-size: 26px !important;
+  text-align: left !important;
+  float: left;
+  color: #83CF69;
+}
+.search-card{
+  border-radius: 2px !important;
 }

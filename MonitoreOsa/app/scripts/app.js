@@ -3,8 +3,9 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'MonitoreOsa' is the name of this angular module example (also set in a <body> attribute in index.html)
 
-angular.module('MonitoreOsa', ['ionic','MonitoreOsa.services',
-'MonitoreOsa.InicioCtrl','MonitoreOsa.HistorialCtrl','MonitoreOsa.PerfilCtrl','MonitoreOsa.Avistamientos'])
+angular.module('MonitoreOsa', ['ionic','MonitoreOsa.services','MonitoreOsa.AvistamientosService',
+'MonitoreOsa.InicioCtrl','MonitoreOsa.HistorialCtrl','MonitoreOsa.PerfilCtrl','MonitoreOsa.Avistamientos',
+'MonitoreOsa.InfoEspecie'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -127,6 +128,15 @@ angular.module('MonitoreOsa', ['ionic','MonitoreOsa.services',
       'avistamientos': {
         templateUrl: 'templates/plantas.html',
         controller: 'PlantasCtrl'
+      }
+    }
+  })
+  .state('tab.info-especie', {
+    url: '/info-especie',
+    views: {
+      'avistamientos': {
+        templateUrl: 'templates/info-especie.html',
+        controller: 'InfoEspecieCtrl'
       }
     }
   });
