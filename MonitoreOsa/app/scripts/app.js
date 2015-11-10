@@ -3,24 +3,20 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-// 'starter.services' is found in services.js
-// 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('MonitoreOsa', ['ionic','MonitoreOsa.inicio','MonitoreOsa.Menu','MonitoreOsa.Avistamientos',
+'MonitoreOsa.Modal','MonitoreOsa.Perfil','MonitoreOsa.Historial','MonitoreOsa.PouchService'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $rootScope) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
-    if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
+    if(window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-      cordova.plugins.Keyboard.disableScroll(true);
-
     }
-    if (window.StatusBar) {
-      // org.apache.cordova.statusbar required
-      StatusBar.styleLightContent();
+    if(window.StatusBar) {
+      StatusBar.styleDefault();
     }
-  });
+    });
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -29,56 +25,58 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   // Learn more here: https://github.com/angular-ui/ui-router
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
-  $stateProvider
 
-  // setup an abstract state for the tabs directive
-    .state('tab', {
-    url: '/tab',
-    abstract: true,
-    templateUrl: 'templates/tabs.html'
+$urlRouterProvider.otherwise('/');
+
+$stateProvider
+  .state('dash', {
+    cache: false,
+    url: '/',
+    templateUrl: 'templates/dash.html',
+    controller: 'InicioCtrl'
   })
-
-  // Each tab has its own nav history stack:
-
-  .state('tab.dash', {
-    url: '/dash',
-    views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
-      }
-    }
-  })
-
-  .state('tab.mi-perfil', {
-      url: '/mi-perfil',
-      views: {
-        'mi-perfil': {
-          templateUrl: 'templates/mi-perfil.html',
-          controller: 'PerfilCtrl'
-        }
-      }
-    })
-    .state('tab.historial', {
-      url: '/historial',
-      views: {
-        'historial': {
-          templateUrl: 'templates/historial.html',
-          controller: 'HistorialCtrl'
-        }
-      }
-    })
-  .state('tab.avistamientos', {
+  .state('avistamientos', {
+    cache: false,
     url: '/avistamientos',
-    views: {
-      'avistamientos': {
-        templateUrl: 'templates/avistamientos.html',
-        controller: 'AvistamientoCtrl'
-      }
-    }
+    templateUrl: 'templates/avistamientos.html',
+    controller: 'NuevoCtrl'
+  })
+  .state('seleccionClases', {
+    cache: false,
+    url: '/clases',
+    templateUrl: 'templates/seleccionClases.html',
+    controller: 'ClasesCtrl'
+  })
+  .state('seleccionEspecies', {
+    cache: false,
+    url: '/especies',
+    templateUrl: 'templates/seleccionEspecies.html',
+    controller: 'EspeciesCtrl'
+  })
+  .state('info-especie', {
+    cache: false,
+    url: '/info-especie',
+    templateUrl: 'templates/info-especie.html',
+    controller: 'InfoEspecieCtrl'
+  })
+  .state('registroEspecie', {
+    cache: false,
+    url: '/registro-especie',
+    templateUrl: 'templates/registro-especie.html',
+    controller: 'RegistroEspecieCtrl'
+  })
+  .state('mi-perfil', {
+    cache: false,
+    url: '/mi-perfil',
+    templateUrl: 'templates/mi-perfil.html',
+    controller: 'PerfilCtrl'
+  })
+  .state('mi-historial', {
+    cache: false,
+    url: '/mi-historial',
+    templateUrl: 'templates/mi-historial.html',
+    controller: 'HistorialCtrl'
   });
 
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
 
-});
+})

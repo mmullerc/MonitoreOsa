@@ -1,29 +1,57 @@
 <ion-view view-title="Mi perfil">
-  <ion-content class="background-content">
-    <div class="card">
-      <div class="item item-body">
-        <div class="list">
-            <a class="item item-avatar">
-              <img src="https://www.google.com/search?q=mono+titi&es_sm=91&source=lnms&tbm=isch&sa=X&ved=0CAcQ_AUoAWoVChMIgfmt6sW7yAIVhqUeCh05tA6j&biw=1280&bih=684&dpr=2#imgrc=M5z0oUNpXtDbhM%3A">
-            <button class="button button-outline button-balanced">
-              Editar Perfil
-             </button>
-             </a>
-             <h2 class="tittle">Información personal</h2>
-
-             <div class="list list-inset">
-               <div class="item">1-1497-0050</div><!--{{usuario.cedula}} -->
-               <div class="item">Mathias Muller</div>
-               <div class="item">27/3/1992</div>
-             </div>
-
-             <h2 class="tittle">Información de seguridad</h2>
-             <div class="list list-inset">
-               <div class="item">mathias@gmail.com</div>
-               <div class="item">8311-6532</div>
-             </div>
+  <ion-nav-bar class="bar bar-balanced">
+    <ion-nav-buttons side="secondary">
+        <a class="icon ion-android-menu icon-menu" ng-click="openModal()" ng-controller="MenuCtrl"></a>
+    </ion-nav-buttons>
+ </ion-nav-bar>
+ <ion-content has-header="true" class="profile-bg">
+      <div id="content">
+        <div id="profile-info">
+          <img id="profile-image" src="images/icon-persona.png">
+          <h3 id="profile-name">Mauricio Araica</h3>
+          <button class="button button-outline button-balanced">
+              Editar perfil
+          </button>
         </div>
       </div>
-    </div>
-  </ion-content>
+      <div class="card">
+        <div class="list">
+          <div class="item item-divider lef stayli">
+            <h2 class="balanced">Información personal</h2>
+          </div>
+          <div class="item item-icon-left">
+            <i class="icon ion-ios-paw-outline balanced"></i>
+            <p>
+              1-1568-0803
+            </p>
+          </div>
+          <div class="item item-icon-left">
+            <i class="icon ion-ios-calendar-outline balanced"></i>
+            <p>
+              12-04-1994
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="list">
+          <div class="item item-divider lef stayli">
+            <h2 class="balanced">Información de seguridad</h2>
+          </div>
+          <div class="item item-icon-left">
+            <i class="icon ion-ios-email-outline balanced"></i>
+            <p>
+              maraicah@ucenfotec.ac.cr
+            </p>
+          </div>
+          <div class="item item-icon-left">
+            <i class="icon ion-ios-telephone-outline balanced"></i>
+            <p>
+              8531-04-13
+            </p>
+          </div>
+        </div>
+      </div>
+    </ion-content>
 </ion-view>

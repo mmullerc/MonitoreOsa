@@ -1,4 +1,7 @@
-.perfil-list{
-  padding-top: 10px;
-  padding-bottom: 10px;
+/* Your application styles go here */
+.div-clases{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }

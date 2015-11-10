@@ -1,0 +1,61 @@
+<ion-view>
+  <ion-nav-bar class="bar">
+    <ion-nav-back-button style="color:#33cd5f;background-color:transparent;">
+      <a style="border:none"class="icon ion-ios-arrow-back back-button">
+      </a>
+      Regresar
+    </ion-nav-back-button>
+    <ion-nav-buttons side="secondary">
+        <a style="color:#33cd5f" class="icon ion-android-menu icon-menu" ng-click="openModal()" ng-controller="MenuCtrl"></a>
+    </ion-nav-buttons>
+ </ion-nav-bar>
+  <ion-nav-title class="titulo-animales balanced">
+     Registro Exitoso
+   </ion-nav-title>
+  <ion-content padding="false"; class="background-content">
+      <div class="footer">
+            <div class="nuevo-avistamiento">
+                <div ng-click="regresar()" class="item item-text-wrap title nuevo-avistamiento">
+                    <h1 class="title" style="color:white">
+                        <i style="font-size:50px;float:right;margin-right:10px;" class="icon ion-plus-circled"></i>
+                        Nuevo
+                    </h1>
+                    <h1 class="title" style="color:white">
+                        Avistamiento
+                    </h1>
+                </div>
+            </div>
+          </div>
+  <div>
+      <button class="button button-outline button-full button-balanced color-btn-especie" ng-click="getPhoto()">
+          <span class="icon ion-camera"></span>
+        Ingresar imagen
+      </button>
+        <button class="button  button-outline  button-full button-balanced color-btn-especie"  ng-click="getPhoto()">
+            <span class="icon ion-document-text"></span>
+          Comentar
+        </button>
+    </div>
+    <div class=" card info-registro">
+      <div class="item  card-especie">
+        <div class="row item-text-wrap item-registro">
+          <div class="col resumen_entrada titulo-registro">Registro#</div>
+          <div class="col resumen_entrada titulo-registro">12,345</div>
+        </div>
+        <div class="row item-text-wrap item-registro">
+          <div class="col resumen_entrada titulo-registro">Fecha</div>
+          <div class="col resumen_entrada titulo-registro">{{fecha}}</div>
+        </div>
+        <div class="row item-text-wrap item-registro">
+          <div class="col resumen_entrada titulo-registro">Hora</div>
+          <div class="col resumen_entrada titulo-registro">{{hora}}</div>
+        </div>
+        <div class="row item-text-wrap item-registro">
+          <div class="col resumen_entrada titulo-registro">Avistamiento</div>
+          <div class="col resumen_entrada titulo-registro">{{especie.nombre}}</div>
+        </div>
+      </div>
+    </div>
+   <div class="icon ion-ios-checkmark icono_registro"></div>
+  </ion-content>
+</ion-view>

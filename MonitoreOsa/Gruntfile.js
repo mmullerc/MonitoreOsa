@@ -1,4 +1,4 @@
-// Generated on 2015-10-10 using generator-ionic 0.7.3
+// Generated on 2015-11-01 using generator-ionic 0.7.3
 'use strict';
 
 var _ = require('lodash');
@@ -157,7 +157,7 @@ module.exports = function (grunt) {
       }
     },
 
-    
+
 
     // Reads HTML for usemin blocks to enable smart builds that automatically
     // concat, minify and revision files. Creates configurations in memory so
@@ -513,7 +513,7 @@ module.exports = function (grunt) {
     'htmlmin'
   ]);
 
-  grunt.registerTask('coverage', 
+  grunt.registerTask('coverage',
     ['karma:continuous',
     'connect:coverage:keepalive'
   ]);

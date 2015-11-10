@@ -1,1 +1,389 @@
 /* Empty. Add your own CSS if you like */
+.photos {
+   /* Prevent vertical gaps */
+   line-height: 0;
+
+   -webkit-column-count: 5;
+   -webkit-column-gap:   0px;
+   -moz-column-count:    5;
+   -moz-column-gap:      0px;
+   column-count:         5;
+   column-gap:           0px;
+}
+
+.photos img {
+  /* Just in case there are inline attributes */
+  width: 100% !important;
+  height: auto !important;
+}
+@media (max-width: 1200px) {
+  .photos {
+  -moz-column-count:    6;
+  -webkit-column-count: 6;
+  column-count:         6;
+  }
+}
+@media (max-width: 1000px) {
+  .photos {
+  -moz-column-count:    6;
+  -webkit-column-count: 6;
+  column-count:        6;
+  }
+}
+@media (max-width: 800px) {
+  .photos {
+  -moz-column-count:    2;
+  -webkit-column-count: 2;
+  column-count:         2;
+  }
+}
+@media (max-width: 400px) {
+  .photos {
+  -moz-column-count:    1;
+  -webkit-column-count: 1;
+  column-count:         1;
+  }
+}
+.photos{
+  border-top: solid;
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: black;
+}
+.especie-img{
+
+  margin: auto;
+  width: 200px;
+  height: 200px;
+  border-radius: 300px;
+  display: flex !important;
+  justify-content: center !important;
+
+}
+.icono_registro{
+    font-size: 60px;
+    text-align: center;
+    color:#33cd5f;
+}
+
+.ion-nifty-modal {
+  width: 90%;
+  min-height: 0 !important;
+  height: 325px !important;
+  top: 25%;
+  left: 5%;
+  right: 5%;
+  bottom: 5%;
+  background-color: transparent;
+  border-radius: 0px !important;
+  -webkit-box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); }
+
+.ion-nifty-modal .ion-modal-content-custom {
+  width: 100%;
+  height: 100%;
+  border-radius: 0px !important;
+  background-color: #fff;
+}
+
+/* Fix modal backdrop for smaller devices */
+@media (max-width: 679px) {
+  .active .modal-backdrop-bg {
+    opacity: .5; }
+  .modal-backdrop-bg {
+    -webkit-transition: opacity 300ms ease-in-out;
+    transition: opacity 300ms ease-in-out;
+    background-color: #000;
+    opacity: 0; }
+}
+.menu-list{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-align: center !important;
+    color:grey !important;
+    font-size: 15px;
+}
+@media(max-height: 400px){
+.menu-list {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 15px;
+  }
+  .ion-nifty-modal{
+    height: 270px !important;
+  }
+}
+@media(max-height: 300px){
+.menu-list {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 15px;
+  }
+  .ion-nifty-modal{
+    height: 270px !important;
+  }
+}
+@media(max-height: 250px){
+.menu-list {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 10px;
+  }
+  .ion-nifty-modal{
+    height: 270px !important;
+  }
+}
+@media(max-height: 200px){
+.menu-list {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 10px;
+  }
+  .ion-nifty-modal{
+    height: 250px !important;
+  }
+}
+
+.menu-icon{
+  font-size: 45px;
+  color:#83CF69;
+   float:right;
+   display: block;
+   margin-top: -20px;
+   position: relative;
+   z-index: 1;
+}
+.icono-info-especie{
+  font-size: 50px !important;
+  float: right;
+  color:#83CF69;
+}
+.avistamiento-title{
+  background-color:#33cd5f;
+  text-align: left;
+  justify-content:center;
+}
+.icon-menu{
+  font-size: 35px;
+}
+.foot-clases{
+padding-top: 20px !important;
+}
+.item-registro{
+  border-bottom: 1px solid;
+}
+.back-button{
+  border: none;
+}
+.scroll {
+  min-height: 100%;
+
+}
+
+.close-btn{
+    position: absolute;
+    top: -20px;
+    right: 30px;
+    background-color: #33cd5f;
+    color: #fff;
+    height: 50px;
+    width: 50px;
+    z-index: 100;
+}
+.close-span{
+  position: absolute;
+  top:25px;
+  right: 17px;
+  color:#fff;
+  font-size: 20px;
+  text-align: center;
+}
+.historial-title{
+  text-align: center;
+  color:grey;
+  font-size: 20px;
+}
+#clases {
+    background-color: #222;
+    border-top: 1px solid #333;
+}
+.clases-container {
+    overflow: auto;
+    display: block;
+}
+.clases-box {
+    -webkit-backface-visibility: hidden;
+    float: left;
+    display: inline-block;
+    width: 33.33%;
+    height: 0;
+    padding-bottom: 25%;
+    background-color: #444;
+    text-align: center;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    position: relative;
+    text-align: left;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.clases-box .info {
+    position: absolute;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0.75em 1.5em;
+    display: block;
+    width: 100%;
+    background-color: transparent;
+}
+@media(max-width: 600px){
+.clases-box {
+    width: 50%;
+    padding-bottom: 55%;
+    -webkit-column-count: 1;
+  }
+}
+.nuevo-avistamiento{
+  background-color:#33cd5f !important;
+  border-color:#33cd5f;
+  text-align:left;
+
+}
+.btn-registro{
+  background-color:#33cd5f !important;
+}
+.footer{
+  background-color:#33cd5f !important;
+  position: relative;
+  width: 100%;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-content: center;
+  align-items: stretch;
+}
+.titulo-registro{
+  font-size: 18px;
+  padding-top:20px;
+}
+.card-tittle{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: white !important;
+}
+.icono-dash{
+  color:#33cd5f !important;
+  float: right;
+  font-size: 25px;
+}
+.titulo-dash{
+  color: grey !important;
+  font-size: 20px !important;
+  text-align: center;
+}
+.card-dash{
+  background-color: white !important;
+}
+.card-desc{
+  font-size: 19px !important;
+  color: grey !important;
+}
+.icon-social{
+  justify-content: center;
+  padding:10px;
+  text-align: center;
+  font-size: 40px !important;
+  color:#33cd5f;
+}
+.social{
+  text-align: center;
+
+}
+.profile-bg {
+        position: fixed;
+        left: 0;
+        width: 100%;
+        background-size: 100%;
+        text-align: center;
+        background-color: #f2f2f2;
+      }
+
+#content {
+    position: relative;
+     margin-top: 90px;
+     background-color: white;
+     padding-top: 200px;
+      }
+
+#profile-info {
+        position: absolute;
+        top: -95px;
+        width: 100%;
+        z-index: 2;
+        text-align: center;
+      }
+#profile-name {
+        color: #BDBDBD;
+        font-size: 26px;
+      }
+#profile-description {
+        font-size: 15px;
+        color: #888;
+      }
+#profile-description a {
+        color: #888;
+      }
+.lef{
+        text-align: left;
+      }
+.stayli{
+        background-color: white;
+      }
+#profile-image {
+        display: block;
+        border-radius: 100px;
+        border: 1px solid #f1f1f1;
+        width: 120px;
+        height: 120px;
+        margin: 30px auto 0;
+        box-shadow: 0px 0px 4px rgba(0,0,0,0.7);
+}
+
+.list-item-content {
+      padding: 5px;
+      }
+
+.list-item {
+        color: #666666;
+      }
+
+.post {
+        color: #444;
+      }
+
+.post-time {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        font-size: 11px;
+        color: #888;
+      }
+
+.post-profile-image {
+        display: inline-block;
+        vertical-align: top;
+        width: 48px;
+        height: 48px;
+        margin-right: 10px;
+      }
+.post-options {
+        position: absolute;
+        font-size: 16px;
+        right: 5px;
+        bottom: 5px;
+        color: #888;
+      }

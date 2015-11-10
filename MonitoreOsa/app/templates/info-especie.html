@@ -1,0 +1,41 @@
+<ion-view>
+  <ion-nav-bar class="bar bar-balanced">
+    <ion-nav-back-button>
+      <a class="icon ion-ios-arrow-back back-button" ng-click="regresarReload()"></a> Regresar
+    </ion-nav-back-button>
+    <ion-nav-buttons side="secondary">
+        <a class="icon ion-android-menu icon-menu" ng-click="openModal()" ng-controller="MenuCtrl"></a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-nav-title class="titulo-animales">
+     {{especie.nombre}}
+   </ion-nav-title>
+  <ion-content class="padding background-content">
+    <div class="row">
+      <img  class="especie-img" src="{{especie.imagen}}" />
+    </div>
+    <div>
+      <div class="item item-text-wrap">
+        <div>
+          <p>
+          Nombre científico: {{especie.nombre_cientifico}}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="item item-text-wrap">
+        <div>
+          <p>
+            {{especie.descripcion}}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="card-especie">
+      <button class="button button-block button-balanced" ng-click="registrarEspecie()">
+        Registrar
+       </button>
+    </div>
+  </ion-content>
+</ion-view>

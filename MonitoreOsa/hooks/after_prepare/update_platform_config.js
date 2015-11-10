@@ -24,7 +24,7 @@
     Examples:
 
     AndroidManifest.xml
-    NOTE: For possible manifest values see http://developer.android.com/guide/topics/manifest/manifest-intro.html
+   NOTE: For possible manifest values see http://developer.android.com/guide/topics/manifest/manifest-intro.html
 
     <platform name="android">
         //These preferences are actually available in Cordova by default although not currently documented
