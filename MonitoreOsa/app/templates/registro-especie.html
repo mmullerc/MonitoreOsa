@@ -10,14 +10,14 @@
     </ion-nav-buttons>
  </ion-nav-bar>
   <ion-nav-title class="titulo-animales balanced">
-     Registro Exitoso
+       Registro exitoso
    </ion-nav-title>
-  <ion-content padding="false"; class="background-content">
+  <ion-content padding="false"; class="profile-bg">
       <div class="footer">
             <div class="nuevo-avistamiento">
                 <div ng-click="regresar()" class="item item-text-wrap title nuevo-avistamiento">
                     <h1 class="title" style="color:white">
-                        <i style="font-size:50px;float:right;margin-right:10px;" class="icon ion-plus-circled"></i>
+                        <i style="font-size:50px;float:right;margin-right:10px;" class="icon ion-ios-plus-outline"></i>
                         Nuevo
                     </h1>
                     <h1 class="title" style="color:white">
@@ -26,36 +26,70 @@
                 </div>
             </div>
           </div>
-  <div>
-      <button class="button button-outline button-full button-balanced color-btn-especie" ng-click="getPhoto()">
-          <span class="icon ion-camera"></span>
-        Ingresar imagen
-      </button>
-        <button class="button  button-outline  button-full button-balanced color-btn-especie"  ng-click="getPhoto()">
-            <span class="icon ion-document-text"></span>
-          Comentar
-        </button>
-    </div>
-    <div class=" card info-registro">
-      <div class="item  card-especie">
-        <div class="row item-text-wrap item-registro">
-          <div class="col resumen_entrada titulo-registro">Registro#</div>
-          <div class="col resumen_entrada titulo-registro">12,345</div>
-        </div>
-        <div class="row item-text-wrap item-registro">
-          <div class="col resumen_entrada titulo-registro">Fecha</div>
-          <div class="col resumen_entrada titulo-registro">{{fecha}}</div>
-        </div>
-        <div class="row item-text-wrap item-registro">
-          <div class="col resumen_entrada titulo-registro">Hora</div>
-          <div class="col resumen_entrada titulo-registro">{{hora}}</div>
-        </div>
-        <div class="row item-text-wrap item-registro">
-          <div class="col resumen_entrada titulo-registro">Avistamiento</div>
-          <div class="col resumen_entrada titulo-registro">{{especie.nombre}}</div>
-        </div>
-      </div>
-    </div>
-   <div class="icon ion-ios-checkmark icono_registro"></div>
+          <div class="card">
+            <div class="list">
+              <div class="item item-icon-left">
+                <i class="icon ion-ios-close-outline assertive"></i>
+                <button class="button button-outline button-assertive" ng-click="getPhoto()">
+                    Cancelar registro
+                  </button>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="list">
+              <div class="item item-divider lef stayli">
+                <h2 class="balanced">Datos de complemento</h2>
+              </div>
+
+              <div class="item item-icon-left">
+                <i class="icon ion-ios-camera-outline balanced"></i>
+                <button class="button button-outline button-balanced" ng-click="getPhoto()">
+                    Ingresar imagen
+                  </button>
+              </div>
+              <div class="item item-icon-left">
+                <i class="icon ion-ios-list-outline balanced"></i>
+                <button class="button button-outline button-balanced" ng-click="getPhoto()">
+                    Ingresar comentario
+                  </button>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="list">
+              <div class="item item-divider lef stayli">
+                <h2 class="balanced">Información del avistamiento</h2>
+              </div>
+
+              <div class="item item-icon-left">
+                <i class="icon ion-ios-box-outline balanced"></i>
+                <p>
+                  Registro: 045
+                </p>
+              </div>
+
+              <div class="item item-icon-left">
+                <i class="icon ion-ios-paw-outline balanced"></i>
+                <p>
+                  Animal: Ardilla coliroja
+                </p>
+              </div>
+
+              <div class="item item-icon-left">
+                <i class="icon ion-ios-calendar-outline balanced"></i>
+                <p>
+                  Fecha: 10/11/15
+                </p>
+              </div>
+
+              <div class="item item-icon-left">
+                <i class="icon ion-ios-time-outline balanced"></i>
+                <p>
+                  Hora: 16:30:34
+                </p>
+              </div>
+            </div>
+          </div>
   </ion-content>
 </ion-view>

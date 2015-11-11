@@ -7,12 +7,12 @@
       Avistamientos
      </ion-nav-title>
  </ion-nav-bar>
-    <ion-content padding="false" class="has-header">
+    <ion-content padding="false" class="has-header profile-bg-2">
       <div class="footer">
             <div class="nuevo-avistamiento">
                 <div ng-click="nuevoAvistamiento()" class="item item-text-wrap title nuevo-avistamiento">
                     <h1 class="title" style="color:white">
-                        <i style="font-size:50px;float:right;margin-right:10px;" class="icon ion-plus-circled"></i>
+                        <i style="font-size:50px;float:right;margin-right:10px;" class="icon ion-ios-plus-outline"></i>
                         Nuevo
                     </h1>
                     <h1 class="title" style="color:white">
@@ -21,9 +21,13 @@
                 </div>
             </div>
           </div>
-        <button class="button button-outline button-block button-balanced">
-            Mis últimos avistamientos
-        </button>
+        <div class="card">
+          <div class="item item-icon-left">
+            <i class="icon ion-ios-time-outline balanced"></i>
+            <h3 class="balanced centro">Mis últimos avistamientos</h3>
+          </div>
+
+        </div>
         <div class="list list-inset card">
             <a class="item item-avatar item-thumbnail-left" ng-click="registrarEspecie()">
                 <img src="images/ardilla_coliroja.png">
