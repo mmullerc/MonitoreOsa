@@ -1,68 +1,25 @@
-<ion-view view-title="Historial">
+<ion-view view-title="Mi historial">
   <ion-nav-bar class="bar bar-balanced">
     <ion-nav-buttons side="secondary">
         <a class="icon ion-android-menu icon-menu" ng-click="openModal()" ng-controller="MenuCtrl"></a>
     </ion-nav-buttons>
   </ion-nav-bar>
-  <ion-content class="background-content">
+  <ion-content class="profile-bg-2">
     <div class="card">
-      <div class="item item-text-wrap historial-title">
-        Cantidad de Avistamientos
-      <br>
-        <h2 class="historial-title">8</h2><!--{{listaAvistamientos.total}}-->
+      <div class="item item-text-wrap centro">
+        <p>
+          Cantidad de avistamientos
+        </p>
+        <h2 class="balanced">1</h2>
       </div>
     </div>
-    <div class="list">
       <div class="list list-inset card">
-          <a class="item item-avatar item-thumbnail-left" ng-click="verInfo()">
+          <a class="item item-avatar item-thumbnail-left" ng-click="verInfoHistorial()">
               <img src="images/ardilla_coliroja.png">
               <h2>Ardilla coliroja</h2>
-              <span style="float:right;font-size:25px;color:grey;" class="icon ion-ios-arrow-forward"></span>
+              <span style="float:right;font-size:25px;" class="icon ion-ios-arrow-forward balanced"></span>
               <p>Sciurus granatensis</p>
           </a>
-          <a class="item item-avatar item-thumbnail-left">
-          <img src="images/ardilla_alfaro.png">
-          <h2>Ardilla enana de Alfaro</h2>
-          <span style="float:right;font-size:25px;color:grey;" class="icon ion-ios-arrow-forward"></span>
-          <p>Microsciurus alfari</p>
-        </a>
-        <a class="item item-avatar item-thumbnail-left">
-          <img src="images/cabro_de_monte.png">
-          <h2>Cabro de monte</h2>
-          <span style="float:right;font-size:25px;color:grey;" class="icon ion-ios-arrow-forward"></span>
-          <p>Mazama temana</p>
-        </a>
-        <a class="item item-avatar item-thumbnail-left" ng-click="registrarEspecie()">
-            <img src="images/ardilla_coliroja.png">
-            <h2>Ardilla coliroja</h2>
-            <span style="float:right;font-size:25px;color:grey;" class="icon ion-ios-arrow-forward"></span>
-            <p>Sciurus granatensis</p>
-        </a>
-        <a class="item item-avatar item-thumbnail-left" ng-click="registrarEspecie()">
-            <img src="images/ardilla_coliroja.png">
-            <h2>Ardilla coliroja</h2>
-            <span style="float:right;font-size:25px;color:grey;" class="icon ion-ios-arrow-forward"></span>
-            <p>Sciurus granatensis</p>
-        </a>
-        <a class="item item-avatar item-thumbnail-left" ng-click="registrarEspecie()">
-            <img src="images/ardilla_coliroja.png">
-            <h2>Ardilla coliroja</h2>
-            <span style="float:right;font-size:25px;color:grey;" class="icon ion-ios-arrow-forward"></span>
-            <p>Sciurus granatensis</p>
-        </a>
-        <a class="item item-avatar item-thumbnail-left">
-        <img src="images/ardilla_alfaro.png">
-        <h2>Ardilla enana de Alfaro</h2>
-        <span style="float:right;font-size:25px;color:grey;" class="icon ion-ios-arrow-forward"></span>
-        <p>Microsciurus alfari</p>
-      </a>
-      <a class="item item-avatar item-thumbnail-left">
-        <img src="images/cabro_de_monte.png">
-        <h2>Cabro de monte</h2>
-        <span style="float:right;font-size:25px;color:grey;" class="icon ion-ios-arrow-forward"></span>
-        <p>Mazama temana</p>
-      </a>
       </div>
-    </div>
   </ion-content>
 </ion-view>

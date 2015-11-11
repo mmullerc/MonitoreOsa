@@ -71,6 +71,11 @@ $stateProvider
     templateUrl: 'templates/mi-perfil.html',
     controller: 'PerfilCtrl'
   })
+  .state('info-historial', {
+    url: '/info-historial',
+    templateUrl: 'templates/info-historial.html',
+    controller: 'info-historialCtrl'
+  })
   .state('mi-historial', {
     cache: false,
     url: '/mi-historial',
