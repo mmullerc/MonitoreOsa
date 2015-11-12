@@ -93,7 +93,7 @@ angular.module('MonitoreOsa.Avistamientos', [])
 
       $timeout(function() {
           console.log('refrescando');
-      }, 200);
+      }, 2000);
 
   for(var i = 0; i < result.rows.length; i++){
 
@@ -142,7 +142,7 @@ angular.module('MonitoreOsa.Avistamientos', [])
       $scope.registrarEspecie = function() {
 
         $state.go('registroEspecie');
-        
+
       };
 
       $scope.regresarReload = function(){

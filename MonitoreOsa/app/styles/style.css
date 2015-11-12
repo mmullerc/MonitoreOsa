@@ -218,7 +218,7 @@ padding-top: 20px !important;
     width: 33.33%;
     height: 0;
     padding-bottom: 25%;
-    background-color: #444;
+    background-color: white;
     text-align: center;
     -webkit-background-size: cover;
     background-size: cover;
@@ -229,6 +229,7 @@ padding-top: 20px !important;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    border: #B2B2B2 solid 1px;
 }
 .clases-box .info {
     position: absolute;
@@ -389,4 +390,16 @@ padding-top: 20px !important;
         right: 5px;
         bottom: 5px;
         color: #888;
+}
+.img-panel{
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+.info-clase{
+  display: inline-flex;
+  color: #B2B2B2;
+  text-align: left;
 }
