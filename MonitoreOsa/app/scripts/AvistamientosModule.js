@@ -78,51 +78,39 @@ angular.module('MonitoreOsa.Avistamientos', [])
      }
 
 })
-.controller('EspeciesCtrl', function($scope, $ionicPopover, $state, $ionicPopup, pouchService, AnimalService, $timeout, AnimalTipoService) {
+.controller('EspeciesCtrl', function($scope, $ionicPopover, $state, $ionicPopup, pouchService, AnimalService, $timeout, AnimalTipoService, MamiferosTerrestres,
+  MamiferosAcuaticos,Aves,ReptilesAnfibiosTerrestres,ReptilesAnfibiosAcuaticos,Plantas) {
 
-    var especie = {};
-    especie.imagen ={};
+    var tipoAnimal;
     $scope.listaEspecies = {};
 
-    var db = pouchService.getDatabase();
+    tipoAnimal = AnimalTipoService.getAnimal();
 
-    db.allDocs({
-      include_docs: true,
-      attachments: true
-    }).then(function (result) {
-
-      $timeout(function() {
-          console.log('refrescando');
-      }, 2000);
-
-  for(var i = 0; i < result.rows.length; i++){
-
-    if(result.rows[i].doc.tipo == AnimalTipoService.getAnimal()){
-
-      especie = result.rows[i].doc;
-
-      especie = getAttachment(especie);
-
-      $scope.listaEspecies[i] = especie;
-
-   }
-  }
-
-    }).catch(function (err) {
-      console.log(err);
-    });
-
-
-  function getAttachment(pespecie){
-
-    for(var key in pespecie._attachments){
-      db.getAttachment(pespecie._id,key).then(function (blob){
-        var url = URL.createObjectURL(blob);
-        pespecie.imagen = url;
-      });
+    if(tipoAnimal == "mamifero-terrestre"){
+      $scope.listaEspecies = MamiferosTerrestres.getMamiferosTerrestres();
+      $scope.especies = "Mamiferos terrestres";
     }
-    return pespecie;
-  }
+    if(tipoAnimal == "mamifero-acuatico"){
+      $scope.listaEspecies = MamiferosAcuaticos.getMamiferosAcuaticos();
+      $scope.especies = "Mamiferos acuaticos";
+    }
+    if(tipoAnimal == "Ave"){
+      $scope.listaEspecies = Aves.getAves();
+      $scope.especies = "Aves";
+    }
+    if(tipoAnimal == "Reptil"){
+      $scope.listaEspecies = ReptilesAnfibiosTerrestres.getTerrestres();
+      $scope.especies = "Reptiles y anfibios";
+    }
+    if(tipoAnimal == "Reptil-acuatico"){
+      $scope.listaEspecies = ReptilesAnfibiosAcuaticos.getAcuaticos();
+      $scope.especies = "Reptiles y anfibios";
+    }
+    if(tipoAnimal == "Planta"){
+      $scope.listaEspecies = Plantas.getPlantas();
+      $scope.especies = "Plantas";
+    }
+
 
   $scope.infoEspecie = function(animalSeleccionado){
 
@@ -186,6 +174,11 @@ angular.module('MonitoreOsa.Avistamientos', [])
            $scope.longitud = position.coords.longitude;
 
          });
+
+         $scope.cancelarRegistro = function(){
+             $state.reload('seleccionClases');
+             $state.go('seleccionClases');
+         }
 
          $scope.regresar = function(){
            $state.reload('seleccionClases');
