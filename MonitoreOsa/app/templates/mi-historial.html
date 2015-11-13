@@ -13,13 +13,23 @@
         <h2 class="balanced">1</h2>
       </div>
     </div>
-      <div class="list list-inset card">
-        <a class="item item-avatar item-thumbnail-left" ng-click="verInfoHistorial()">
-            <img src="images/ardilla_coliroja.png">
-            <h2>Ardilla coliroja</h2>
-            <span style="float:right;font-size:25px;" class="icon ion-ios-arrow-forward balanced"></span>
-            <p>Sciurus granatensis</p>
-        </a>
+    <div class="list card">
+    <div>
+      <div class="item item-icon-left">
+        <i class="icon ion-ios-location-outline balanced"></i>
+        <h2>Ardilla coliroja</h2>
+        <p>Sciurus granatensis</p>
       </div>
+      <div class="item item-image">
+        <img class="image-mihistorial"src="images/ardilla.jpg">
+      </div>
+      <a class="item item-icon-right" ng-click="verInfoHistorial()">
+        <i class="icon ion-ios-arrow-right balanced"></i>
+        <p>
+          Ver avistamiento
+        </p>
+      </a>
+    </div>
+  </div>
   </ion-content>
 </ion-view>

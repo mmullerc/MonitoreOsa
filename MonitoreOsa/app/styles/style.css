@@ -156,7 +156,7 @@
 .icono-info-especie{
   font-size: 50px !important;
   float: right;
-  color:#83CF69;
+  color:#bbb;
 }
 .avistamiento-title{
   background-color:#33cd5f;
@@ -218,7 +218,7 @@ padding-top: 20px !important;
     width: 33.33%;
     height: 0;
     padding-bottom: 25%;
-    background-color: white;
+    background-color: #fbfbfb;
     text-align: center;
     -webkit-background-size: cover;
     background-size: cover;
@@ -229,7 +229,7 @@ padding-top: 20px !important;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    border: #B2B2B2 solid 1px;
+    border: #eeeeee solid 1px;
 }
 .clases-box .info {
     position: absolute;
@@ -290,8 +290,12 @@ padding-top: 20px !important;
   background-color: white !important;
 }
 .card-desc{
-  font-size: 19px !important;
+  font-size: 14px !important;
   color: grey !important;
+  text-align: justify !important;
+}
+.gris{
+  color: grey;
 }
 .icon-social{
   justify-content: center;
@@ -400,6 +404,27 @@ padding-top: 20px !important;
 }
 .info-clase{
   display: inline-flex;
-  color: #B2B2B2;
+  color: #bbb;
   text-align: left;
+}
+.mono{
+  color: #805a3f;
+}
+.delfin{
+  color: #2980b9;
+}
+.aves{
+  color:#f1c40f;
+}
+.plantas{
+  color:#2ecc71;
+}
+.tortuga{
+  color: #006700;
+}
+.rana{
+  color: #c0392b;
+}
+.image-mihistorial{
+  height: 150px;
 }
