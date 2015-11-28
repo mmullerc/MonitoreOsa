@@ -4,10 +4,10 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 angular.module('MonitoreOsa', ['ionic','MonitoreOsa.inicio','MonitoreOsa.Menu','MonitoreOsa.Avistamientos',
-'MonitoreOsa.Modal','MonitoreOsa.Perfil','MonitoreOsa.Historial','MonitoreOsa.PouchService'])
+'MonitoreOsa.Modal','MonitoreOsa.Perfil','MonitoreOsa.Historial','MonitoreOsa.PouchService','MonitoreOsa.DBService',
+'pouchdb','MonitoreOsa.DBAvistamientos'])
 
-.run(function($ionicPlatform, $rootScope,pouchService,AnimalService, $timeout,MamiferosTerrestres,
-  MamiferosAcuaticos,Aves,ReptilesAnfibiosTerrestres,ReptilesAnfibiosAcuaticos,Plantas) {
+.run(function($ionicPlatform, $pouchDB, $rootScope, DBAvistamientos) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -18,107 +18,16 @@ angular.module('MonitoreOsa', ['ionic','MonitoreOsa.inicio','MonitoreOsa.Menu','
       StatusBar.styleDefault();
     }
   });
-
-  var especie = {};
-  especie.imagen ={};
-  var listaEspecies = {};
-  var mamiferosTerrestres = {};
-  var mamiferosAcuaticos = {};
-  var aves = {};
-  var plantas = {};
-  var anfibiosReptilesTerrestres = {};
-  var anfibiosReptilesAcuaticos = {}
-
-  var db = pouchService.getDatabase();
-
-    db.allDocs({
-      include_docs: true,
-      attachments: true
-    }).then(function (result) {
-
-  for(var i = 0; i < result.rows.length; i++){
-
-  if(result.rows[i].doc.tipo == "mamifero-terrestre"){
-
-      especie = result.rows[i].doc;
-
-      especie = getAttachment(especie);
-
-      mamiferosTerrestres[i] = especie;
-
-    }
-
-    if(result.rows[i].doc.tipo == "mamifero-acuatico"){
-
-        especie = result.rows[i].doc;
-
-        especie = getAttachment(especie);
-
-        mamiferosAcuaticos[i] = especie;
-
-      }
-
-      if(result.rows[i].doc.tipo == "Ave"){
-
-          especie = result.rows[i].doc;
-
-          especie = getAttachment(especie);
-
-          aves[i] = especie;
-        }
-
-        if(result.rows[i].doc.tipo == "Reptil"){
-
-            especie = result.rows[i].doc;
-
-            especie = getAttachment(especie);
-
-            anfibiosReptilesTerrestres[i] = especie;
-
-          }
-
-          if(result.rows[i].doc.tipo == "Reptil-acuatico"){
-
-              especie = result.rows[i].doc;
-
-              especie = getAttachment(especie);
-
-              anfibiosReptilesAcuaticos[i] = especie;
-
-            }
-
-            if(result.rows[i].doc.tipo == "Planta"){
-
-                especie = result.rows[i].doc;
-
-                especie = getAttachment(especie);
-
-                plantas[i] = especie;
-
-              }
-
-          }
-          MamiferosTerrestres.setMamiferosTerrestres(mamiferosTerrestres);
-          MamiferosAcuaticos.setMamiferosAcuaticos(mamiferosAcuaticos);
-          Aves.setAves(aves);
-          ReptilesAnfibiosTerrestres.setTerrestres(anfibiosReptilesTerrestres);
-          ReptilesAnfibiosAcuaticos.setAcuaticos(anfibiosReptilesAcuaticos);
-          Plantas.setPlantas(plantas);
-
-    }).catch(function (err) {
-      console.log(err);
-    });
-
-  function getAttachment(pespecie){
-
-    for(var key in pespecie._attachments){
-      db.getAttachment(pespecie._id,key).then(function (blob){
-        var url = URL.createObjectURL(blob);
-        pespecie.imagen = url;
-      });
-    }
-    return pespecie;
+//  $pouchDB.setRemote("https://mmullerc.cloudant.com/mamiferos/");
+  if(ionic.Platform.isAndroid()) {
+  $pouchDB.setDatabase("mamiferos");
+  DBAvistamientos.setDatabase();
+  }else{
+  $pouchDB.setDatabase("mamiferos");
+  DBAvistamientos.setDatabase();
   }
+    $pouchDB.getAll();
+//  $pouchDB.setRemote("http://127.0.0.1:5984/mamiferos/_all_docs?limit=20&include_docs=true");
 
 })
 

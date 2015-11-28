@@ -1,14 +1,51 @@
 angular.module('MonitoreOsa.PouchService', [])
 
-.service('pouchService', function($rootScope){
+.service('pouchService', function($rootScope,$q){
+
+  var db;
+  var docs;
+
   return{
-    getDatabase: function(){
-      var db = new PouchDB("mamiferos", {size: 50});
-      var remoteDB = new PouchDB("https://mmullerc:MonitoreOsa123@mmullerc.cloudant.com/mamiferos");
-      db.replicate.from(remoteDB,{live:true, retry:true})
+
+    getDataBase: function(){
+
+      db = new PouchDB("mamiferos");
+      var remoteDB = new PouchDB("http://127.0.0.1:5984/mamiferos/_all_docs?limit=20&include_docs=true");
+      db.replicate.from(remoteDB).on('complete', function () {
+
+        console.log(db);
+
+        $rootScope.$apply();
+
+      }).on('error', function (err) {
+        console.log("Error al instaciar la BD")
+      });
+
       return db;
+    },
+    getAllDocs: function(){
+
+      var deferred = $q.defer();
+
+      db.allDocs({
+        include_docs: true
+      }).then(function (result) {
+
+        console.log(result);
+
+        console.log("primero en el servicio");
+
+        docs = result.rows.map(function (row) { return row.doc; });
+
+      }).catch(function (err) {
+        console.log(err);
+      });
+
+      return docs;
+
     }
   }
+
 })
 .service('AnimalTipoService', function() {
 
@@ -52,123 +89,18 @@ angular.module('MonitoreOsa.PouchService', [])
 
 
 })
-.service('Aves', function() {
+.service('TodosAnimales', function() {
 
   var service = {};
 
          return{
 
-             getAves: function(){
+             getAnimales: function(){
 
                  return service;
              },
 
-             setAves: function(value){
-
-                 service = value;
-
-             }
-
-         }
-
-
-})
-.service('MamiferosTerrestres', function() {
-
-  var service = {};
-
-         return{
-
-             getMamiferosTerrestres: function(){
-
-                 return service;
-             },
-
-             setMamiferosTerrestres: function(value){
-
-                 service = value;
-
-             }
-
-         }
-
-
-})
-.service('MamiferosAcuaticos', function() {
-
-  var service = {};
-
-         return{
-
-             getMamiferosAcuaticos: function(){
-
-                 return service;
-             },
-
-             setMamiferosAcuaticos: function(value){
-
-                 service = value;
-
-             }
-
-         }
-
-
-})
-.service('ReptilesAnfibiosTerrestres', function() {
-
-  var service = {};
-
-         return{
-
-             getTerrestres: function(){
-
-                 return service;
-             },
-
-             setTerrestres: function(value){
-
-                 service = value;
-
-             }
-
-         }
-
-
-})
-.service('ReptilesAnfibiosAcuaticos', function() {
-
-  var service = {};
-
-         return{
-
-             getAcuaticos: function(){
-
-                 return service;
-             },
-
-             setAcuaticos: function(value){
-
-                 service = value;
-
-             }
-
-         }
-
-
-})
-.service('Plantas', function() {
-
-  var service = {};
-
-         return{
-
-             getPlantas: function(){
-
-                 return service;
-             },
-
-             setPlantas: function(value){
+             setAnimales: function(value){
 
                  service = value;
 
