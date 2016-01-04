@@ -81,6 +81,7 @@ angular.module('MonitoreOsa.Avistamientos', [])
     var listaAnfibiosAcuaticos;
     var listaAves;
     var listaPlantas;
+    var cont = 0;
 
     var listaEspecies;
     $scope.listaEspecies = {};
@@ -88,14 +89,16 @@ angular.module('MonitoreOsa.Avistamientos', [])
     var animales = TodosAnimales.getAnimales();
 
     listaEspecies = animales;
+    console.log(listaEspecies)
 
     for(var key in listaEspecies){
 
-    if(AnimalTipoService.getAnimal() == listaEspecies[key].tipo){
-      $scope.listaEspecies[key] = listaEspecies[key];
-      $scope.especies = "Animales";
-    }
+      if(AnimalTipoService.getAnimal() == listaEspecies[key].tipo){
+        $scope.listaEspecies[key] = listaEspecies[key];
+        $scope.especies = "Animales";
+      }
   }
+
   $scope.infoEspecie = function(animalSeleccionado){
 
     AnimalService.setAnimal(animalSeleccionado);
@@ -126,12 +129,13 @@ angular.module('MonitoreOsa.Avistamientos', [])
           $state.go('seleccionEspecies');
         }
 })
-.controller('RegistroEspecieCtrl', function($scope, $ionicPopover, $state, $filter, AnimalService,
-  $rootScope, DBAvistamientos) {
+.controller('RegistroEspecieCtrl', function($scope, $state, $filter, AnimalService,
+  $rootScope, DBAvistamientos, Camera, $ionicPopup) {
 
       var avistamiento = {};
       $scope.especie = {};
       $scope.especie = AnimalService.getAnimal();
+      var _id;
 
         var app = {};
 
@@ -150,27 +154,96 @@ angular.module('MonitoreOsa.Avistamientos', [])
            $scope.longitud = position.coords.longitude;
 
            avistamiento = {
-
-             "idRegistro":"20 y prueba",
              "fecha":$scope.fecha,
              "hora":$scope.hora,
              "avistamiento":$scope.especie.nombre,
              "latitud":$scope.latitud,
              "longitud":$scope.longitud
            }
+           _id = new Date().toISOString();
 
-           DBAvistamientos.save(avistamiento);
+           DBAvistamientos.save(_id,avistamiento);
            DBAvistamientos.upload();
 
          });
 
+    $scope.getPhoto = function() {
+
+       var options = {
+                     quality: 100,
+                     allowEdit: true,
+                     targetWidth: 350,
+                     targetHeight: 350,
+                     saveToPhotoAlbum: true,
+                     destinationType : navigator.camera.DestinationType.DATA_URL
+                 };
+
+           navigator.camera.getPicture(function(imageURI) {
+
+             $scope.url = imageURI;
+
+               DBAvistamientos.saveAttachment(_id,imageURI);
+               DBAvistamientos.upload();
+
+          }, function(err) {
+
+            alert(err);
+
+          },options);
+        }
+
+    $scope.getPhotoFromLibrary = function() {
+
+              var options = {
+                     quality: 100,
+                     allowEdit: true,
+                     targetWidth: 350,
+                     targetHeight: 350,
+                     sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY,
+                     destinationType : navigator.camera.DestinationType.DATA_URL,
+                     saveToPhotoAlbum: false
+              };
+
+           navigator.camera.getPicture(function(imageURI) {
+
+             $scope.url = imageURI;
+
+               DBAvistamientos.saveAttachment(_id,imageURI);
+               DBAvistamientos.upload();
+
+          }, function(err) {
+
+            alert(err);
+
+          },options);
+        }
+
          $scope.cancelarRegistro = function(){
-           $state.go('seleccionClases');
+
+           DBAvistamientos.delete(_id);
+           DBAvistamientos.upload();
+           $scope.showConfirm();
          }
 
-         $scope.regresar = function(){
-           $state.go('seleccionClases');
-         }
+         $scope.showConfirm = function() {
+            var confirmPopup = $ionicPopup.alert({
+              title: 'Registro cancelado',
+              okType: 'button-balanced',
+              okText: 'Aceptar',
+            });
+
+            confirmPopup.then(function(res) {
+              if(res) {
+                $state.go('seleccionClases');
+              } else {
+                console.log('You are not sure');
+              }
+            });
+          };
+
+          $scope.regresar = function(){
+            $state.go('seleccionClases');
+          }
 
          console.log($scope.latitud);
 

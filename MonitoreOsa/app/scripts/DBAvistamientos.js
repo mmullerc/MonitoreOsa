@@ -1,20 +1,21 @@
 angular.module('MonitoreOsa.DBAvistamientos', [])
-.service("DBAvistamientos", ["$rootScope", function($rootScope) {
+.service("DBAvistamientos", ["$rootScope","pouchDB", function($rootScope, pouchDB, $state, $timeout) {
 
     var database;
     var listaEspecies = {};
-    var remote = "https://couchdb-1623e1.smileupps.com/avistamientos/";
+    var remote = "https://mmullerc.cloudant.com/avistamientos/"
 
     this.setDatabase = function() {
 
-      database = new PouchDB("avistamientos");
+      database = new pouchDB("avistamientos", {adapter:'websql'});
 
   }
 
-  this.save = function(avistamiento){
+  this.save = function(id,avistamiento){
 
-    database.post({
-      avistamiento
+    database.put({
+      "_id": id,
+      "avistamiento" : avistamiento
     }).then(function (response) {
 
       console.log(response);
@@ -23,6 +24,24 @@ angular.module('MonitoreOsa.DBAvistamientos', [])
       console.log(err);
     });
 
+  }
+
+  this.saveAttachment = function(id, imagen){
+
+    database.get(id).then(function (doc) {
+
+      database.putAttachment(doc._id, 'imagen.jpg',doc._rev, imagen, 'image/jpg').then(function (result) {
+
+        alert("Se guardó correctamente");
+
+      }).catch(function (err) {
+        alert(err);
+      });
+
+
+    }).catch(function (err) {
+      console.log(err);
+    });
   }
 
   this.upload = function(){
@@ -37,4 +56,35 @@ angular.module('MonitoreOsa.DBAvistamientos', [])
 
   }
 
+  this.delete = function(id, $timeout){
+
+    alert("borrando");
+
+    database.get(id).then(function(doc) {
+      return database.remove(doc._id, doc._rev);
+    }).then(function (result) {
+
+    }).catch(function (err) {
+      setTimeout(function () {
+       delete(id);
+   }, 3000);
+    });
+  }
+
 }])
+.factory('Camera', ['$q', function($q) {
+
+  return {
+    getPicture: function(options) {
+      var q = $q.defer();
+
+      navigator.camera.getPicture(function(result) {
+        q.resolve(result);
+      }, function(err) {
+        q.reject(err);
+      }, options);
+
+      return q.promise;
+    }
+  }
+}]);

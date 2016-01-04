@@ -1,5 +1,6 @@
 angular.module('MonitoreOsa.DBService', [])
-.service("$pouchDB", ["$rootScope", "$q","TodosAnimales","pouchDB","$log", function($rootScope, $q,TodosAnimales, pouchDB, $log) {
+.service("$pouchDB", ["$rootScope", "$q","TodosAnimales","pouchDB","$log","$ionicLoading",
+  function($rootScope, $q,TodosAnimales, pouchDB, $log, $ionicLoading) {
 
     var database;
     var changeListener;
@@ -9,43 +10,28 @@ angular.module('MonitoreOsa.DBService', [])
     this.setDatabase = function(databaseName) {
 
     //PouchDB.debug.enable('*');
-    database = new pouchDB('animales'),
-    remote = 'https://couchdb-1623e1.smileupps.com/animals/',
+    database = new pouchDB('animales', {adapter: 'websql'}),
+    remote = 'https://mmullerc.cloudant.com/mamiferos/',
     opts = {
       live:true,
       retry: true
     };
 
-  database.replicate.from('https://couchdb-1623e1.smileupps.com/animals/', {
-      live: true,
-      retry: true
-  }).on('change', function (info) {
+    $ionicLoading.show({
+      template: '<p>Cargando datos</p><ion-spinner></ion-spinner>',
+      animation: 'fade-in',
+      showBackdrop: true,
+      showDelay: 0
+    });
 
-    console.log("Cambios!");
+    database.replicate.from(remote).then(function (result) {
 
-  }).on('paused', function (info) {
+      $ionicLoading.hide();
+      console.log(result);
 
-    console.log("paused");
-
-  }).on('active', function () {
-
-    console.log("active");
-
-  }).on('denied', function (info) {
-
-    console.log("denied");
-
-  }).on('complete', function (info) {
-
-    console.log("Complete!");
-
-    console.log(database._docCount);
-
-  }).on('error', function (err) {
-
-    console.log(err);
-
-  });
+    }).catch(function (err) {
+      console.log(err);
+    });
 
   $rootScope.$apply();
 }
@@ -54,9 +40,6 @@ angular.module('MonitoreOsa.DBService', [])
 
       database.replicate.from(remote).then(function (result) {
 
-        alert("replicating");
-        alert(database._docCount);
-        console.log(result);
 
       }).catch(function (err) {
         console.log(err);
@@ -125,13 +108,7 @@ angular.module('MonitoreOsa.DBService', [])
         attachments: true
     }).then(function (result) {
 
-      return Promise.resolve().then(function () {
-
         getAnimales(result);
-
-      }).then(function (result){
-
-      })
 
     }).catch(function (err) {
     console.log(err);
@@ -162,5 +139,17 @@ angular.module('MonitoreOsa.DBService', [])
                 });
             }
         return pespecie;
+    }
+    this.getSinImagenes = function(){
+
+    database.allDocs({
+        include_docs: true
+      }).then(function (result) {
+
+        return result;
+
+    }).catch(function (err) {
+      console.log(err);
+    });
     }
 }])

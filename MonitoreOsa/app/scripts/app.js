@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('MonitoreOsa', ['ionic','MonitoreOsa.inicio','MonitoreOsa.Menu','MonitoreOsa.Avistamientos',
 'MonitoreOsa.Modal','MonitoreOsa.Perfil','MonitoreOsa.Historial','MonitoreOsa.PouchService','MonitoreOsa.DBService',
-'pouchdb','MonitoreOsa.DBAvistamientos'])
+'pouchdb','MonitoreOsa.DBAvistamientos','ngCordova'])
 
 .run(function($ionicPlatform, $pouchDB, $rootScope, DBAvistamientos) {
   $ionicPlatform.ready(function() {
@@ -22,11 +22,12 @@ angular.module('MonitoreOsa', ['ionic','MonitoreOsa.inicio','MonitoreOsa.Menu','
   if(ionic.Platform.isAndroid()) {
   $pouchDB.setDatabase("mamiferos");
   DBAvistamientos.setDatabase();
+  $pouchDB.getAll();
   }else{
   $pouchDB.setDatabase("mamiferos");
   DBAvistamientos.setDatabase();
+  $pouchDB.getAll();
   }
-    $pouchDB.getAll();
 //  $pouchDB.setRemote("http://127.0.0.1:5984/mamiferos/_all_docs?limit=20&include_docs=true");
 
 })
@@ -96,4 +97,4 @@ $stateProvider
   });
 
 
-})
+});

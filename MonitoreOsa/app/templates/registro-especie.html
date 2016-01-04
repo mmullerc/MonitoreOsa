@@ -1,10 +1,5 @@
 <ion-view>
   <ion-nav-bar class="bar">
-    <ion-nav-back-button style="color:#33cd5f;background-color:transparent;">
-      <a style="border:none"class="icon ion-ios-arrow-back back-button">
-      </a>
-      Regresar
-    </ion-nav-back-button>
     <ion-nav-buttons side="secondary">
         <a style="color:#33cd5f" class="icon ion-android-menu icon-menu" ng-click="openModal()" ng-controller="MenuCtrl"></a>
     </ion-nav-buttons>
@@ -41,10 +36,16 @@
               <div class="item item-divider lef stayli">
                 <h2 class="balanced">Datos de complemento</h2>
               </div>
-
               <div class="item item-icon-left">
                 <i class="icon ion-ios-camera-outline balanced"></i>
                 <button class="button button-outline button-balanced" ng-click="getPhoto()">
+                    Tomar foto
+                  </button>
+              </div>
+
+              <div class="item item-icon-left">
+                <i class="icon ion-image balanced"></i>
+                <button class="button button-outline button-balanced" ng-click="getPhotoFromLibrary()">
                     Ingresar imagen
                   </button>
               </div>
