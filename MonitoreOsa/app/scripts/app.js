@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('MonitoreOsa', ['ionic','MonitoreOsa.inicio','MonitoreOsa.Menu','MonitoreOsa.Avistamientos',
+angular.module('MonitoreOsa', ['ionic','MonitoreOsa.inicio','MonitoreOsa.Avistamientos',
 'MonitoreOsa.Modal','MonitoreOsa.Perfil','MonitoreOsa.Historial','MonitoreOsa.PouchService','MonitoreOsa.DBService',
 'pouchdb','MonitoreOsa.DBAvistamientos','ngCordova'])
 
@@ -20,11 +20,11 @@ angular.module('MonitoreOsa', ['ionic','MonitoreOsa.inicio','MonitoreOsa.Menu','
   });
 //  $pouchDB.setRemote("https://mmullerc.cloudant.com/mamiferos/");
   if(ionic.Platform.isAndroid()) {
-  $pouchDB.setDatabase("mamiferos");
+  $pouchDB.setDatabase();
   DBAvistamientos.setDatabase();
   $pouchDB.getAll();
   }else{
-  $pouchDB.setDatabase("mamiferos");
+  $pouchDB.setDatabase();
   DBAvistamientos.setDatabase();
   $pouchDB.getAll();
   }

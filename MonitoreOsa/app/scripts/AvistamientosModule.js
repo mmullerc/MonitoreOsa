@@ -10,7 +10,7 @@ angular.module('MonitoreOsa.Avistamientos', [])
 
 })
 .controller('ClasesCtrl', function($scope, $ionicPopover, $state, AnimalService,
-  $timeout, AnimalTipoService, pouchService,$rootScope) {
+  $timeout, AnimalTipoService,$rootScope) {
 
      $scope.verMamiferosTerrestres = function(){
 
@@ -73,7 +73,7 @@ angular.module('MonitoreOsa.Avistamientos', [])
 
 })
 .controller('EspeciesCtrl', function($scope, $rootScope, $state, $ionicPopup,
-  pouchService, AnimalService, $timeout, AnimalTipoService,TodosAnimales, $pouchDB) {
+   AnimalService, $timeout, AnimalTipoService,TodosAnimales, $pouchDB) {
 
     var listaMamiferosTerrestres;
     var listaMamiferosAcuaticos;
@@ -111,7 +111,7 @@ angular.module('MonitoreOsa.Avistamientos', [])
     $state.go('registroEspecie');
   };
 })
-.controller('InfoEspecieCtrl', function($scope, $ionicPopover, $state, pouchService, AnimalService) {
+.controller('InfoEspecieCtrl', function($scope, $ionicPopover, $state, AnimalService) {
 
       $scope.especie = AnimalService.getAnimal();
 
@@ -153,6 +153,9 @@ angular.module('MonitoreOsa.Avistamientos', [])
            $scope.latitud = position.coords.latitude;
            $scope.longitud = position.coords.longitude;
 
+           alert($scope.latitud);
+           alert($scope.longitud);
+
            avistamiento = {
              "fecha":$scope.fecha,
              "hora":$scope.hora,
@@ -165,6 +168,10 @@ angular.module('MonitoreOsa.Avistamientos', [])
            DBAvistamientos.save(_id,avistamiento);
            DBAvistamientos.upload();
 
+         }, function(err) {
+
+           alert(err);
+
          });
 
     $scope.getPhoto = function() {
@@ -172,8 +179,6 @@ angular.module('MonitoreOsa.Avistamientos', [])
        var options = {
                      quality: 100,
                      allowEdit: true,
-                     targetWidth: 350,
-                     targetHeight: 350,
                      saveToPhotoAlbum: true,
                      destinationType : navigator.camera.DestinationType.DATA_URL
                  };
@@ -197,8 +202,6 @@ angular.module('MonitoreOsa.Avistamientos', [])
               var options = {
                      quality: 100,
                      allowEdit: true,
-                     targetWidth: 350,
-                     targetHeight: 350,
                      sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY,
                      destinationType : navigator.camera.DestinationType.DATA_URL,
                      saveToPhotoAlbum: false
