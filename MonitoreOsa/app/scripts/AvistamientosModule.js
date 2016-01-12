@@ -153,9 +153,6 @@ angular.module('MonitoreOsa.Avistamientos', [])
            $scope.latitud = position.coords.latitude;
            $scope.longitud = position.coords.longitude;
 
-           alert($scope.latitud);
-           alert($scope.longitud);
-
            avistamiento = {
              "fecha":$scope.fecha,
              "hora":$scope.hora,

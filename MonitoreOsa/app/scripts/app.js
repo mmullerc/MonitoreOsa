@@ -4,8 +4,8 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 angular.module('MonitoreOsa', ['ionic','MonitoreOsa.inicio','MonitoreOsa.Avistamientos',
-'MonitoreOsa.Modal','MonitoreOsa.Perfil','MonitoreOsa.Historial','MonitoreOsa.PouchService','MonitoreOsa.DBService',
-'pouchdb','MonitoreOsa.DBAvistamientos','ngCordova'])
+'MonitoreOsa.Modal','MonitoreOsa.Perfil','MonitoreOsa.Historial','MonitoreOsa.PouchService',
+'MonitoreOsa.DBService','MonitoreOsa.DBAvistamientos','ngCordova'])
 
 .run(function($ionicPlatform, $pouchDB, $rootScope, DBAvistamientos) {
   $ionicPlatform.ready(function() {

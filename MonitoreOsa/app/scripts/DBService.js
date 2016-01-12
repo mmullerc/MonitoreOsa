@@ -1,6 +1,6 @@
 angular.module('MonitoreOsa.DBService', [])
-.service("$pouchDB", ["$rootScope", "$q","TodosAnimales","pouchDB","$log","$ionicLoading",
-  function($rootScope, $q,TodosAnimales, pouchDB, $log, $ionicLoading) {
+.service("$pouchDB", ["$rootScope", "$q","TodosAnimales","$log","$ionicLoading","$http",
+  function($rootScope, $q,TodosAnimales, $log, $ionicLoading, $http) {
 
     var database;
     var changeListener;
@@ -10,10 +10,10 @@ angular.module('MonitoreOsa.DBService', [])
     this.setDatabase = function(databaseName) {
 
     //PouchDB.debug.enable('*');
-    database = new pouchDB('animales', {adapter: 'websql'}),
-    remote = 'https://mmullerc.cloudant.com/mamiferos/',
+    database = new PouchDB('animales', {adapter:'websql'}),
+    remote = new PouchDB('https://mmullerc.cloudant.com/mamiferos/'),
     opts = {
-      live:true,
+      live: true,
       retry: true
     };
 
@@ -26,16 +26,70 @@ angular.module('MonitoreOsa.DBService', [])
 
     database.replicate.from(remote).then(function (result) {
 
-      $ionicLoading.hide();
       console.log(result);
+
+      $ionicLoading.hide();
 
     }).catch(function (err) {
       console.log(err);
     });
 
-  $rootScope.$apply();
-}
+    var options ={
 
+      revs_info : true
+    }
+
+    database.get('ardilla_coliroja',[options]).then(function (doc) {
+
+      console.log(doc);
+
+    }).catch(function (err) {
+      console.log(err);
+    });
+
+    testhttp();
+
+    function testhttp(){
+      $http.get("https://mmullerc.cloudant.com/especies/ardilla_coliroja?revs_info=true").then(function(response) {
+
+        console.log(response);
+
+      });
+    }
+
+    database.changes({
+      since: "now"
+    }).on("change", function (change) {
+      alert("changes");
+      // A document has been created, updated, or deleted
+    }).on("error", function (err) {
+      alert("error");
+    });
+  }
+
+/*
+  var rep = database.replicate.from(remote, {
+  }).on('change', function (info) {
+// handle change
+  }).on('paused', function () {
+// replication paused (e.g. user went offline)
+  $ionicLoading.hide();
+  alert("paused");
+  alert(database._docCount);
+  alert(remote._docCount);
+  }).on('active', function () {
+// replicate resumed (e.g. user went back online)
+  }).on('denied', function (info) {
+// a document failed to replicate, e.g. due to permissions
+  alert("denied");
+  }).on('complete', function (info) {
+// handle complete
+  }).on('error', function (err) {
+// handle error
+  alert("error");
+  });
+}
+*/
   this.setRemote = function(remoteDB) {
       database.replicate.from(remote).then(function (result) {
       }).catch(function (err) {

@@ -1,5 +1,5 @@
 angular.module('MonitoreOsa.DBAvistamientos', [])
-.service("DBAvistamientos", ["$rootScope","pouchDB", function($rootScope, pouchDB, $state, $timeout) {
+.service("DBAvistamientos", ["$rootScope", function($rootScope, $state, $timeout) {
 
     var database;
     var listaEspecies = {};
@@ -7,7 +7,7 @@ angular.module('MonitoreOsa.DBAvistamientos', [])
 
     this.setDatabase = function() {
 
-      database = new pouchDB("avistamientos", {adapter:'websql'});
+      database = new PouchDB("avistamientos", {adapter:'websql'});
 
   }
 
@@ -58,16 +58,14 @@ angular.module('MonitoreOsa.DBAvistamientos', [])
 
   this.delete = function(id, $timeout){
 
-    alert("borrando");
-
     database.get(id).then(function(doc) {
       return database.remove(doc._id, doc._rev);
     }).then(function (result) {
 
     }).catch(function (err) {
-      setTimeout(function () {
-       delete(id);
-   }, 3000);
+    //  setTimeout(function () {
+    //   delete(id);
+  // }, 3000);
     });
   }
 

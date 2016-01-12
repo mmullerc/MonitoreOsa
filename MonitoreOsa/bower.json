@@ -2,7 +2,6 @@
   "name": "MonitoreOsa",
   "version": "0.0.0",
   "dependencies": {
-    "angular-pouchdb": "~4.0.0",
     "blob-util": "~1.1.2",
     "ionic": "v1.0.0-rc.3",
     "ionic-nifty-modal": "*",
