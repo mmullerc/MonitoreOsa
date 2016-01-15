@@ -152,7 +152,6 @@ angular.module('MonitoreOsa.Avistamientos', [])
 
            $scope.latitud = position.coords.latitude;
            $scope.longitud = position.coords.longitude;
-
            avistamiento = {
              "fecha":$scope.fecha,
              "hora":$scope.hora,
@@ -161,14 +160,11 @@ angular.module('MonitoreOsa.Avistamientos', [])
              "longitud":$scope.longitud
            }
            _id = new Date().toISOString();
-
            DBAvistamientos.save(_id,avistamiento);
            DBAvistamientos.upload();
-
          }, function(err) {
-
-           alert(err);
-
+           console.log(err.text);
+           console.log("no se registro");
          });
 
     $scope.getPhoto = function() {

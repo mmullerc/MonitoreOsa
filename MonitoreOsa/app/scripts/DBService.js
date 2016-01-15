@@ -11,12 +11,11 @@ angular.module('MonitoreOsa.DBService', [])
 
     //PouchDB.debug.enable('*');
     database = new PouchDB('animales', {adapter:'websql'}),
-    remote = new PouchDB('https://mmullerc.cloudant.com/mamiferos/'),
+    remote = new PouchDB('https://mmullerc.cloudant.com/especies/'),
     opts = {
       live: true,
       retry: true
     };
-
     $ionicLoading.show({
       template: '<p>Cargando datos</p><ion-spinner></ion-spinner>',
       animation: 'fade-in',
@@ -25,8 +24,6 @@ angular.module('MonitoreOsa.DBService', [])
     });
 
     database.replicate.from(remote).then(function (result) {
-
-      console.log(result);
 
       $ionicLoading.hide();
 
