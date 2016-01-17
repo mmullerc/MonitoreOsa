@@ -6,7 +6,7 @@
     "ionic": "v1.0.0-rc.3",
     "ionic-nifty-modal": "*",
     "jquery": "~2.1.4",
-    "ngCordova": "~0.1.23-alpha",
+    "ngCordova": "~0.1.24-alpha",
     "pouchdb": "~5.1.0",
     "ng-couchbase-lite": "~0.0.1",
     "pouchdb-persist": "~0.0.6"

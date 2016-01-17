@@ -7,7 +7,7 @@ angular.module('MonitoreOsa', ['ionic','MonitoreOsa.inicio','MonitoreOsa.Avistam
 'MonitoreOsa.Modal','MonitoreOsa.Perfil','MonitoreOsa.Historial','MonitoreOsa.PouchService',
 'MonitoreOsa.DBService','MonitoreOsa.DBAvistamientos','ngCordova'])
 
-.run(function($ionicPlatform, $pouchDB, $rootScope, DBAvistamientos) {
+.run(function($ionicPlatform, $pouchDB, $rootScope, $timeout, DBAvistamientos) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -15,21 +15,15 @@ angular.module('MonitoreOsa', ['ionic','MonitoreOsa.inicio','MonitoreOsa.Avistam
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     }
     if(window.StatusBar) {
-      StatusBar.styleDefault();
+      StatusBar.styleLightContent();
     }
+    $pouchDB.setDatabase();
+    $pouchDB.getAll();
+    DBAvistamientos.setDatabase();
+      //$sqlService.setDatabase();
   });
-//  $pouchDB.setRemote("https://mmullerc.cloudant.com/mamiferos/");
-  if(ionic.Platform.isAndroid()) {
-  $pouchDB.setDatabase();
-  DBAvistamientos.setDatabase();
-  $pouchDB.getAll();
-  }else{
-  $pouchDB.setDatabase();
-  DBAvistamientos.setDatabase();
-  $pouchDB.getAll();
-  }
-//  $pouchDB.setRemote("http://127.0.0.1:5984/mamiferos/_all_docs?limit=20&include_docs=true");
-
+  $rootScope.$apply();
+  //$sqlService.getEspecies();
 })
 
 .config(function($stateProvider, $urlRouterProvider) {

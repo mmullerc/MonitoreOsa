@@ -6,97 +6,152 @@ angular.module('MonitoreOsa.DBService', [])
     var changeListener;
     var listaEspecies = {};
     var remote;
+    var localDocs;
+    var localEspecie = {}
+    var exists = false;
+    var attachment;
+    var listaEspecies = [];
+    var base64;
+    var serverSize;
+    var serverDocCount;
+    var dbResults;
+    var docs;
 
-    this.setDatabase = function(databaseName) {
+    var database_changes = new PouchDB('changes', {adapter:'websql'});
+
+    this.setDatabase = function() {
+
+    var online = navigator.onLine;
 
     //PouchDB.debug.enable('*');
-    database = new PouchDB('animales', {adapter:'websql'}),
-    remote = new PouchDB('https://mmullerc.cloudant.com/mamiferos/'),
-    opts = {
-      live: true,
-      retry: true
-    };
+    database = new PouchDB('animales', {adapter:'websql'});
 
-    $ionicLoading.show({
-      template: '<p>Cargando datos</p><ion-spinner></ion-spinner>',
-      animation: 'fade-in',
-      showBackdrop: true,
-      showDelay: 0
-    });
+          if(online ==true){
+            checkForChanges();
+          }
+          
+  function checkForChanges(){
 
-    database.replicate.from(remote).then(function (result) {
-
+    database.allDocs({
+    }).then(function (result) {
       console.log(result);
-
-      $ionicLoading.hide();
-
+        localDocs = result.total_rows;
+        docs = result.rows;
     }).catch(function (err) {
       console.log(err);
     });
 
-    var options ={
+    $http.get("https://mmullerc.cloudant.com/especies/").then(function(response) {
 
-      revs_info : true
-    }
+      serverSize = response.data.other.data_size;
+      serverDocCount = response.data.doc_count;
 
-    database.get('ardilla_coliroja',[options]).then(function (doc) {
+      if(serverDocCount < localDocs){
 
-      console.log(doc);
+        $http.get("https://mmullerc.cloudant.com/especies/_changes").then(function(response) {
 
-    }).catch(function (err) {
-      console.log(err);
-    });
+          for(var i = 0; i < response.data.results.length; i++){
+            if(response.data.results[i].deleted == true){
+              database.get(response.data.results[i].id).then(function (doc) {
+                return database.remove(doc);
+              });
+            }
+          }
+        })
 
-    testhttp();
+      }else{
 
-    function testhttp(){
-      $http.get("https://mmullerc.cloudant.com/especies/ardilla_coliroja?revs_info=true").then(function(response) {
+      database_changes.get('data_size').then(function(doc) {
 
-        console.log(response);
+          console.log(doc.data_size);
+          console.log(serverSize);
+          console.log("+++++++++++++++");
+          console.log(localDocs);
+          console.log(serverDocCount);
 
-      });
-    }
+        if(doc.data_size == serverSize && localDocs == serverDocCount){
 
-    database.changes({
-      since: "now"
-    }).on("change", function (change) {
-      alert("changes");
-      // A document has been created, updated, or deleted
-    }).on("error", function (err) {
-      alert("error");
-    });
-  }
-
-/*
-  var rep = database.replicate.from(remote, {
-  }).on('change', function (info) {
-// handle change
-  }).on('paused', function () {
-// replication paused (e.g. user went offline)
-  $ionicLoading.hide();
-  alert("paused");
-  alert(database._docCount);
-  alert(remote._docCount);
-  }).on('active', function () {
-// replicate resumed (e.g. user went back online)
-  }).on('denied', function (info) {
-// a document failed to replicate, e.g. due to permissions
-  alert("denied");
-  }).on('complete', function (info) {
-// handle complete
-  }).on('error', function (err) {
-// handle error
-  alert("error");
-  });
-}
-*/
-  this.setRemote = function(remoteDB) {
-      database.replicate.from(remote).then(function (result) {
+        }else{
+          console.log("Changing!");
+          database_changes.put({
+            _id: doc._id,
+            _rev: doc._rev,
+            data_size: serverSize,
+            doc_count: database_changes._docCount
+          }).then(function (response) {
+            checkRemote();
+          }).catch(function (err) {
+            console.log(err);
+          });
+        }
       }).catch(function (err) {
         console.log(err);
+        if(err.status == 404){
+          database_changes.put({
+            _id: 'data_size',
+            data_size: serverSize,
+            doc_count: database_changes._docCount
+          }).then(function (response) {
+             checkRemote();
+          }).catch(function (err) {
+            console.log(err);
+          });
+        }
       });
+    }
+    });
+    $rootScope.$apply();
   }
 
+  function checkRemote(){
+
+    $http.get("https://mmullerc.cloudant.com/especies/_all_docs?&include_docs=true").then(function(response) {
+
+      angular.forEach(response.data.rows,function(especie){
+
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', 'https://mmullerc.cloudant.com/especies/'+especie.id+'/imagen', true);
+      xhr.responseType = 'arraybuffer';
+
+      xhr.onload = function(e) {
+        if (this.status == 200) {
+          var uInt8Array = new Uint8Array(this.response);
+          var i = uInt8Array.length;
+          var binaryString = new Array(i);
+          while (i--)
+          {
+            binaryString[i] = String.fromCharCode(uInt8Array[i]);
+          }
+          var data = binaryString.join('');
+
+          base64 = window.btoa(data);
+
+              database.put({
+                "_id":especie.id,
+                "nombre": especie.doc.nombre,
+                "nombre_cientifico": especie.doc.nombre_cientifico,
+                "descripcion": especie.doc.descripcion,
+                "tipo": especie.doc.tipo,
+                "_attachments": {
+                  "imagen": {
+                    "content_type": "image/png",
+                    "data": base64
+                  }
+                }
+              }).then(function (response) {
+
+            }).catch(function (err) {
+              console.log(err);
+            });
+        }
+      };
+      xhr.send();
+    });
+      }, function (err) {
+        console.err(err);
+      });
+    }
+  }
     this.get = function(documentId) {
         return database.get(documentId);
     }

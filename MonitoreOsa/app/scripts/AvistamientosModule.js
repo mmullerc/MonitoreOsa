@@ -1,13 +1,11 @@
 angular.module('MonitoreOsa.Avistamientos', [])
 
-.controller('NuevoCtrl', function($scope, $ionicPopover, $state) {
+.controller('NuevoCtrl', function($scope, $ionicPopover, $state, $pouchDB, $timeout) {
 
   $scope.nuevoAvistamiento = function(){
 
     $state.go('seleccionClases');
-
-  }
-
+}
 })
 .controller('ClasesCtrl', function($scope, $ionicPopover, $state, AnimalService,
   $timeout, AnimalTipoService,$rootScope) {
@@ -73,7 +71,7 @@ angular.module('MonitoreOsa.Avistamientos', [])
 
 })
 .controller('EspeciesCtrl', function($scope, $rootScope, $state, $ionicPopup,
-   AnimalService, $timeout, AnimalTipoService,TodosAnimales, $pouchDB) {
+   AnimalService, $timeout, AnimalTipoService,TodosAnimales) {
 
     var listaMamiferosTerrestres;
     var listaMamiferosAcuaticos;
@@ -83,13 +81,16 @@ angular.module('MonitoreOsa.Avistamientos', [])
     var listaPlantas;
     var cont = 0;
 
-    var listaEspecies;
     $scope.listaEspecies = {};
 
+  //  $scope.listaEspecies = $sqlService.getEspecies();
     var animales = TodosAnimales.getAnimales();
 
+    var listaEspecies = {};
+
     listaEspecies = animales;
-    console.log(listaEspecies)
+
+  //  var blob = $scope.listaEspecies[0].imagen;
 
     for(var key in listaEspecies){
 
@@ -152,6 +153,9 @@ angular.module('MonitoreOsa.Avistamientos', [])
 
            $scope.latitud = position.coords.latitude;
            $scope.longitud = position.coords.longitude;
+
+           alert($scope.latitud);
+           alert($scope.longitud);
 
            avistamiento = {
              "fecha":$scope.fecha,
