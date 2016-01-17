@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('MonitoreOsa', ['ionic','MonitoreOsa.inicio','MonitoreOsa.Avistamientos',
 'MonitoreOsa.Modal','MonitoreOsa.Perfil','MonitoreOsa.Historial','MonitoreOsa.PouchService',
-'MonitoreOsa.DBService','MonitoreOsa.DBAvistamientos','ngCordova'])
+'MonitoreOsa.DBService','MonitoreOsa.IniciarSesion','MonitoreOsa.DBAvistamientos','MonitoreOsa.Usuarios','ngCordova'])
 
 .run(function($ionicPlatform, $pouchDB, $rootScope, $timeout, DBAvistamientos) {
   $ionicPlatform.ready(function() {
@@ -33,7 +33,7 @@ angular.module('MonitoreOsa', ['ionic','MonitoreOsa.inicio','MonitoreOsa.Avistam
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
 
-$urlRouterProvider.otherwise('/');
+$urlRouterProvider.otherwise('/inciar-sesion');
 
 $stateProvider
   .state('dash', {
@@ -42,9 +42,20 @@ $stateProvider
     templateUrl: 'templates/dash.html',
     controller: 'InicioCtrl'
   })
+  .state('iniciar-sesion', {
+    url: '/inciar-sesion',
+    templateUrl: 'templates/iniciar-session.html',
+    controller: 'iniciar-sesionCtrl'
+  })
+  .state('signup', {
+    cache: false,
+    url: '/signup',
+    templateUrl: 'templates/sign-up.html',
+    controller: 'SignUpCtrl'
+  })
   .state('avistamientos', {
     cache: false,
-    url: '/',
+    url: '/avistamiento',
     templateUrl: 'templates/avistamientos.html',
     controller: 'NuevoCtrl'
   })
@@ -89,6 +100,4 @@ $stateProvider
     templateUrl: 'templates/mi-historial.html',
     controller: 'HistorialCtrl'
   });
-
-
 });

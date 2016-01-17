@@ -29,7 +29,6 @@ angular.module('MonitoreOsa.DBService', [])
           if(online ==true){
             checkForChanges();
           }
-          
   function checkForChanges(){
 
     database.allDocs({

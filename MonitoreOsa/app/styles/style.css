@@ -308,6 +308,40 @@ padding-top: 20px !important;
   text-align: center;
 
 }
+/*Login START*/
+.login-title{
+  text-align: center;
+  color: #AAA;
+  font-size: 30px;
+}
+
+.login-bg {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/fondo.jpeg") no-repeat center center fixed;
+  /*-webkit-filter: blur(4px);*/
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  position: fixed;
+  z-index: -1;
+}
+.login-form {
+  margin-top: 15em;
+}
+
+/*Login END*/
+
+/*SignUp START*/
+.signup-btn{
+  text-align: center;
+  color: #AAA;
+  font-size: 16px;
+}
+
+.signup-form{
+  margin-top: 10em;
+}
+/*SignUp END*/
+
 .profile-bg {
         position: fixed;
         left: 0;
@@ -333,6 +367,12 @@ padding-top: 20px !important;
      background-color: white;
      padding-top: 200px;
       }
+#content-edit {
+  position: relative;
+  margin-top: 90px;
+  background-color: white;
+  padding-top: 150px;
+}
 
 #profile-info {
         position: absolute;
@@ -345,6 +385,16 @@ padding-top: 20px !important;
         color: #BDBDBD;
         font-size: 26px;
       }
+#profile-name-input{
+  margin-top: 10px;
+}
+#profile-name-edit {
+  color: #BDBDBD;
+  font-size: 26px;
+  margin-top: 15px;
+  text-align: center;
+}
+
 #profile-description {
         font-size: 15px;
         color: #888;

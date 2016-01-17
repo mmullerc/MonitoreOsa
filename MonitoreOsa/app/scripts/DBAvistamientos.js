@@ -17,11 +17,9 @@ angular.module('MonitoreOsa.DBAvistamientos', [])
       "_id": id,
       "avistamiento" : avistamiento
     }).then(function (response) {
-
-      console.log(response);
-
+      alert("Se guardó correctamente");
     }).catch(function (err) {
-      console.log(err);
+      alert("err");
     });
 
   }
@@ -37,8 +35,6 @@ angular.module('MonitoreOsa.DBAvistamientos', [])
       }).catch(function (err) {
         alert(err);
       });
-
-
     }).catch(function (err) {
       console.log(err);
     });

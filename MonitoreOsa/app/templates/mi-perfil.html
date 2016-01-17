@@ -8,8 +8,8 @@
       <div id="content">
         <div id="profile-info">
           <img id="profile-image" src="images/icon-persona.png">
-          <h3 id="profile-name">Mauricio Araica</h3>
-          <button class="button button-outline button-balanced">
+          <h3 id="profile-name">{{nombre}} {{apellido}}</h3>
+          <button ng-click ="salir()"class="button button-outline button-balanced">
               Editar perfil
           </button>
         </div>
@@ -22,13 +22,13 @@
           <div class="item item-icon-left">
             <i class="icon ion-ios-paw-outline balanced"></i>
             <p>
-              1-1568-0803
+              {{cedula}}
             </p>
           </div>
           <div class="item item-icon-left">
             <i class="icon ion-ios-calendar-outline balanced"></i>
             <p>
-              12-04-1994
+              {{fecha}}
             </p>
           </div>
         </div>
@@ -42,13 +42,13 @@
           <div class="item item-icon-left">
             <i class="icon ion-ios-email-outline balanced"></i>
             <p>
-              maraicah@ucenfotec.ac.cr
+              {{correo}}
             </p>
           </div>
           <div class="item item-icon-left">
             <i class="icon ion-ios-telephone-outline balanced"></i>
             <p>
-              8531-04-13
+              {{telefono}}
             </p>
           </div>
         </div>
