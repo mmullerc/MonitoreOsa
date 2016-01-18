@@ -11,7 +11,7 @@
       <section>
         <div class="list list-inset card" ng-repeat="especie in listaEspecies">
             <a class="item item-avatar item-thumbnail-left" ng-click="registrarEspecie(especie)">
-                <img ng-src="{{especie.imagen}}">
+                <img src="{{especie.imagen}}">
                 <span style="float:right;font-size:35px" class="icon ion-ios-help-outline icono-info-especie" ng-click="infoEspecie(especie);$event.stopPropagation()"></span>
                 <h2>{{especie.nombre}}</h2>
                 <p>{{especie.nombre_cientifico}}</p>

@@ -17,6 +17,15 @@ angular.module('MonitoreOsa.DBService', [])
     var dbResults;
     var docs;
 
+    $ionicLoading.show({
+    template: '<ion-spinner icon="spiral"></ion-spinner>',
+    content: 'Cargando datos',
+    animation: 'fade-in',
+    showBackdrop: true,
+    maxWidth: 200,
+    showDelay: 0
+  });
+
     var database_changes = new PouchDB('changes', {adapter:'websql'});
 
     this.setDatabase = function() {
@@ -160,6 +169,7 @@ angular.module('MonitoreOsa.DBService', [])
         include_docs: true,
         attachments: true
     }).then(function (result) {
+
         getAnimales(result);
 
     }).catch(function (err) {
@@ -178,6 +188,9 @@ angular.module('MonitoreOsa.DBService', [])
             listaEspecies[i] = especie;
 
           }
+          $ionicLoading.hide();
+          console.log("Ready!");
+
           TodosAnimales.setAnimales(listaEspecies);
 
           return listaEspecies;

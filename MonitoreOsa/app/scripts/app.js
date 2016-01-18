@@ -54,25 +54,21 @@ $stateProvider
     controller: 'SignUpCtrl'
   })
   .state('avistamientos', {
-    cache: false,
     url: '/avistamiento',
     templateUrl: 'templates/avistamientos.html',
     controller: 'NuevoCtrl'
   })
   .state('seleccionClases', {
-    cache: false,
     url: '/clases',
     templateUrl: 'templates/seleccionClases.html',
     controller: 'ClasesCtrl'
   })
   .state('seleccionEspecies', {
-    cache: false,
     url: '/especies',
     templateUrl: 'templates/seleccionEspecies.html',
     controller: 'EspeciesCtrl'
   })
   .state('info-especie', {
-    cache: false,
     url: '/info-especie',
     templateUrl: 'templates/info-especie.html',
     controller: 'InfoEspecieCtrl'
