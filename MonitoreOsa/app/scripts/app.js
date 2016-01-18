@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('MonitoreOsa', ['ionic','MonitoreOsa.inicio','MonitoreOsa.Avistamientos',
 'MonitoreOsa.Modal','MonitoreOsa.Perfil','MonitoreOsa.Historial','MonitoreOsa.PouchService',
-'MonitoreOsa.DBService','MonitoreOsa.IniciarSesion','MonitoreOsa.DBAvistamientos','MonitoreOsa.Usuarios','ngCordova'])
+'MonitoreOsa.DBService','MonitoreOsa.IniciarSesion','MonitoreOsa.DBAvistamientos','MonitoreOsa.Usuarios','MonitoreOsa.dash','ngCordova'])
 
 .run(function($ionicPlatform, $pouchDB, $rootScope, $timeout, DBAvistamientos) {
   $ionicPlatform.ready(function() {
@@ -33,7 +33,7 @@ angular.module('MonitoreOsa', ['ionic','MonitoreOsa.inicio','MonitoreOsa.Avistam
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
 
-$urlRouterProvider.otherwise('/inciar-sesion');
+$urlRouterProvider.otherwise('/avistamiento');
 
 $stateProvider
   .state('dash', {
