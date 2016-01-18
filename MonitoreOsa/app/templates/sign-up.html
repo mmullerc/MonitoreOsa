@@ -1,0 +1,49 @@
+<ion-view view-title="Registrarse">
+  <ion-content class="login-bg"></ion-content>
+    <div class="container">
+      <div class="row">
+     <div class="col">
+    <form>
+      <div class="login-title">
+        MonitoreOsa
+      </div>
+      <div class="list list-inset">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Cédula</span>
+          <input type="text"  ng-model="cedula">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Nombre</span>
+          <input type="text"  ng-model="nombre">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Apellido</span>
+          <input type="text" ng-model="apellido">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Correo</span>
+          <input type="text" ng-model="correo">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Teléono</span>
+          <input type="tel" ng-model="telefono">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Fecha nacimiento</span>
+          <input type="text" placeholder="dd/mm/yy"ng-model="fecha">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Contraseña</span>
+          <input type="password" ng-model="contrasena">
+        </label>
+      </div>
+      <div class="padding-horizontal">
+        <button type="button" name="submitBtn" class="button button-full button-balanced" ng-click="registrar()">
+          Registrarse
+        </button>
+      </div>
+    </form>
+  </div>
+  </div>
+  </div>
+</ion-view>

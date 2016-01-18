@@ -33,7 +33,7 @@ angular.module('MonitoreOsa.DBService', [])
 
     database.allDocs({
     }).then(function (result) {
-      console.log(result);
+      console.log(result.total_rows);
         localDocs = result.total_rows;
         docs = result.rows;
     }).catch(function (err) {
