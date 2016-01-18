@@ -1,9 +1,9 @@
 angular.module('MonitoreOsa.IniciarSesion', [])
 .controller('iniciar-sesionCtrl', function($rootScope,$http,$scope, $ionicModal, $state,$ionicPopup) {
 
-  function init() {
-    if(localStorage.getItem('nombre') == null) {
-      $state.go('iniciar-sesion');
+  var init = function () {
+  if(localStorage.getItem("nombre") == null){
+      $state.go("iniciar-sesion");
     }
   };
   init();

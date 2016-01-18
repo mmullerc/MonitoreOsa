@@ -3,9 +3,9 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('MonitoreOsa', ['ionic','MonitoreOsa.inicio','MonitoreOsa.Avistamientos',
+angular.module('MonitoreOsa', ['ionic','MonitoreOsa.inicio','MonitoreOsa.IniciarSesion','MonitoreOsa.Avistamientos',
 'MonitoreOsa.Modal','MonitoreOsa.Perfil','MonitoreOsa.Historial','MonitoreOsa.PouchService',
-'MonitoreOsa.DBService','MonitoreOsa.IniciarSesion','MonitoreOsa.DBAvistamientos','MonitoreOsa.Usuarios','MonitoreOsa.dash','ngCordova'])
+'MonitoreOsa.DBService','MonitoreOsa.DBAvistamientos','MonitoreOsa.Usuarios','MonitoreOsa.dash','ngCordova'])
 
 .run(function($ionicPlatform, $pouchDB, $rootScope, $timeout, DBAvistamientos) {
   $ionicPlatform.ready(function() {
@@ -28,27 +28,20 @@ angular.module('MonitoreOsa', ['ionic','MonitoreOsa.inicio','MonitoreOsa.Avistam
 
 .config(function($stateProvider, $urlRouterProvider) {
 
-  // Ionic uses AngularUI Router which uses the concept of states
-  // Learn more here: https://github.com/angular-ui/ui-router
-  // Set up the various states which the app can be in.
-  // Each state's controller can be found in controllers.js
-
 $urlRouterProvider.otherwise('/avistamiento');
 
 $stateProvider
   .state('dash', {
-    cache: false,
     url: '/dash',
     templateUrl: 'templates/dash.html',
     controller: 'InicioCtrl'
   })
   .state('iniciar-sesion', {
-    url: '/inciar-sesion',
+    url: '/iniciar-sesion',
     templateUrl: 'templates/iniciar-session.html',
     controller: 'iniciar-sesionCtrl'
   })
   .state('signup', {
-    cache: false,
     url: '/signup',
     templateUrl: 'templates/sign-up.html',
     controller: 'SignUpCtrl'
@@ -74,13 +67,11 @@ $stateProvider
     controller: 'InfoEspecieCtrl'
   })
   .state('registroEspecie', {
-    cache: false,
     url: '/registro-especie',
     templateUrl: 'templates/registro-especie.html',
     controller: 'RegistroEspecieCtrl'
   })
   .state('mi-perfil', {
-    cache: false,
     url: '/mi-perfil',
     templateUrl: 'templates/mi-perfil.html',
     controller: 'PerfilCtrl'
@@ -91,7 +82,6 @@ $stateProvider
     controller: 'info-historialCtrl'
   })
   .state('mi-historial', {
-    cache: false,
     url: '/mi-historial',
     templateUrl: 'templates/mi-historial.html',
     controller: 'HistorialCtrl'

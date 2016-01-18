@@ -138,6 +138,7 @@ angular.module('MonitoreOsa.DBService', [])
                 "_id":especie.id,
                 "nombre": especie.doc.nombre,
                 "nombre_cientifico": especie.doc.nombre_cientifico,
+                "habitat":especie.doc.habitat,
                 "descripcion": especie.doc.descripcion,
                 "tipo": especie.doc.tipo,
                 "_attachments": {
