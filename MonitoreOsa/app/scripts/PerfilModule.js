@@ -10,6 +10,7 @@ angular.module('MonitoreOsa.Perfil', [])
 
     $scope.salir = function(){
       $state.go('iniciar-sesion');
-      localStorage.setItem("id", "");
+      localStorage.setItem('id', null);
+      localStorage.setItem('nombre', null);
     }
 });

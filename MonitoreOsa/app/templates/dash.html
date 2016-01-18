@@ -4,7 +4,7 @@
         <a class="icon ion-android-menu icon-menu" ng-click="openModal()" ng-controller="MenuCtrl"></a>
     </ion-nav-buttons>
  </ion-nav-bar>
-  <ion-content class="padding profile-bg-2">
+  <ion-content ng-controller="DashCtrl" class="padding profile-bg-2">
     <div class="card">
         <h2 id="profile-name" class="centro">Bienvenido</h2>
         <p class="gris centro">
@@ -12,20 +12,9 @@
         </p>
     </div>
     <div class="card">
-      <div class="list">
-        <div class="item item-icon-left">
-          <i class="icon ion-ios-flame-outline balanced"></i>
-          <p>
-            Misión y visión
-          </p>
-        </div>
-        <div class="item item-icon-left">
-          <i class="icon ion-ios-people-outline balanced"></i>
-          <p>
-            Colaboradores
-          </p>
-        </div>
-      </div>
+      <ion-list>
+
+       </ion-list>
     </div>
     <div class="list card">
       <div class="item item-text-wrap">
@@ -38,10 +27,6 @@
           </p>
         </div>
       </div>
-    </div>
-    <div class="social">
-      <a class="icon ion-social-instagram icon-social"></a>
-      <a class="icon ion-social-facebook icon-social"></a>
     </div>
   </ion-content>
 </ion-view>
