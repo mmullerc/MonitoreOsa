@@ -1,12 +1,5 @@
 angular.module('MonitoreOsa.IniciarSesion', [])
-.controller('iniciar-sesionCtrl', function($rootScope,$http,$scope, $ionicModal, $state,$ionicPopup) {
-
-  var init = function () {
-  if(localStorage.getItem("nombre") == null){
-      $state.go("iniciar-sesion");
-    }
-  };
-  init();
+.controller('iniciar-sesionCtrl', function($rootScope,$http,$scope, $ionicModal, $state, $ionicPopup) {
 
   $scope.ingresar = function(){
     $http.get("https://mmullerc.cloudant.com/usuarios_movil/"+$scope.correo+"")

@@ -7,29 +7,15 @@
   <ion-content class="profile-bg-2">
     <div class="card">
       <div class="item item-text-wrap centro">
-        <p>
-          Cantidad de avistamientos
-        </p>
-        <h2 class="balanced">1</h2>
+        <h2 class="balanced">Avistamientos</h2>
       </div>
     </div>
-    <div class="list card">
-    <div>
-      <div class="item item-icon-left">
-        <i class="icon ion-ios-location-outline balanced"></i>
-        <h2>Ardilla coliroja</h2>
-        <p>Sciurus granatensis</p>
+      <div class="list card" ng-repeat="avis in listaEspecies">
+          <a class="item item-text-wrap" ng-click="registrarEspecie(especie)">
+              <h2>{{avis.avistamiento.avistamiento}}</h2>
+              <h2>{{avis.avistamiento.fecha}}</h2>
+              <h2>{{avis.avistamiento.hora}}</h2>
+          </a>
       </div>
-      <div class="item item-image">
-        <img class="image-mihistorial"src="images/ardilla.jpg">
-      </div>
-      <a class="item item-icon-right" ng-click="verInfoHistorial()">
-        <i class="icon ion-ios-arrow-right balanced"></i>
-        <p>
-          Ver avistamiento
-        </p>
-      </a>
-    </div>
-  </div>
   </ion-content>
 </ion-view>

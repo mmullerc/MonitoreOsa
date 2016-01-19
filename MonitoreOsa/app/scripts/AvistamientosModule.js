@@ -1,6 +1,15 @@
 angular.module('MonitoreOsa.Avistamientos', [])
 
-.controller('NuevoCtrl', function($scope, $ionicPopover, $state, $pouchDB, $timeout) {
+.controller('NuevoCtrl', function($scope, $ionicPopover, $state, $pouchDB, $timeout, TodosAnimales) {
+
+  var init = function () {
+  if(localStorage.getItem("nombre") == null){
+      $state.go("iniciar-sesion");
+    }
+  };
+  init();
+
+  $pouchDB.getAll();
 
   $scope.nuevoAvistamiento = function(){
 
@@ -136,7 +145,11 @@ angular.module('MonitoreOsa.Avistamientos', [])
       var avistamiento = {};
       $scope.especie = {};
       $scope.especie = AnimalService.getAnimal();
+      $scope.latitud = {};
+      $scope.longitud = {};
       var _id;
+      var registroCorrecto = {};
+      var imagenRegistroCorrecto = {};
 
         var app = {};
 
@@ -163,8 +176,13 @@ angular.module('MonitoreOsa.Avistamientos', [])
            }
            _id = new Date().toISOString();
            DBAvistamientos.save(_id,avistamiento);
-           DBAvistamientos.upload();
+
          }, function(err) {
+           var confirmPopup = $ionicPopup.alert({
+             title: 'Active el GPS del celular',
+             okType: 'button-assertive',
+             okText: 'Aceptar',
+           });
            console.log(err.text);
            console.log("no se registro");
          });
@@ -242,7 +260,4 @@ angular.module('MonitoreOsa.Avistamientos', [])
           $scope.regresar = function(){
             $state.go('seleccionClases');
           }
-
-         console.log($scope.latitud);
-
 });
