@@ -365,7 +365,7 @@ padding-top: 20px !important;
     position: relative;
      margin-top: 90px;
      background-color: white;
-     padding-top: 200px;
+     padding-top: 270px;
       }
 #content-edit {
   position: relative;
@@ -478,18 +478,35 @@ padding-top: 20px !important;
 .image-mihistorial{
   height: 150px;
 }
-/*----------------------------------------------------*/
+.justificado{
+    text-align: justify;
+    padding: 10px;
+}
 
-.list .item.item-accordion {
-  line-height: 38px;
-  padding-top: 0;
-  padding-bottom: 0;
-  transition: 0.09s all linear;
+/*Parallax*/
+
+.parallax-container {
+  position: relative;
+  overflow: hidden;
+  height: 500px; 
 }
-.list .item.item-accordion.ng-hide {
-  line-height: 0px;
-}
-.list .item.item-accordion.ng-hide-add,
-.list .item.item-accordion.ng-hide-remove {
-  display: block !important;
-}
+
+.parallax {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1; 
+  }
+  .parallax img {
+    display: none;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    transform: translateX(-50%); 
+    }
