@@ -1,5 +1,7 @@
 angular.module('MonitoreOsa.IniciarSesion', [])
-.controller('iniciar-sesionCtrl', function($rootScope,$http,$scope, $ionicModal, $state, $ionicPopup) {
+
+.controller('iniciar-sesionCtrl', function($rootScope,$http,$scope, $ionicModal, $state,$ionicPopup) {
+    $('.parallax').parallax();
 
   $scope.ingresar = function(){
     $http.get("https://mmullerc.cloudant.com/usuarios_movil/"+$scope.correo+"")

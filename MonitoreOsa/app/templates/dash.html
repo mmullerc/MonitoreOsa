@@ -1,32 +1,28 @@
 <ion-view view-title="MonitoreOsa">
   <ion-nav-bar class="bar bar-balanced">
     <ion-nav-buttons side="secondary">
-        <a class="icon ion-android-menu icon-menu" ng-click="openModal()" ng-controller="MenuCtrl"></a>
+        <a class="icon ion-android-menu icon-menu" ng-controller="MenuCtrl" ng-click="openModal()" ></a>
     </ion-nav-buttons>
  </ion-nav-bar>
   <ion-content ng-controller="DashCtrl" class="padding profile-bg-2">
-    <div class="card">
-        <h2 id="profile-name" class="centro">Bienvenido</h2>
-        <p class="gris centro">
-          ¡Gracias por formar parte de MonitoreOsa!
-        </p>
-    </div>
-    <div class="card">
-      <ion-list>
+      <div class="parallax-container">
+    <div class="parallax"><img src="app/images/fondo.jpeg"/></div>
+  </div>
+  <div class="section white">
+    <div class="row container">
+      <h2 class="header">MonitoreOsa</h2>
+      <p class="grey-text text-darken-3 lighten-3"></p>
 
-       </ion-list>
     </div>
-    <div class="list card">
-      <div class="item item-text-wrap">
-        <div>
-          <p class="card-desc">
-            MONITOREOSA <span><i class="icon ion-ios-paw-outline balanced mono"></i></span>  es una aplicación de servicio comunitario  para avistamiento de animales y plantas para un mejor control y cuido de las especies que habitan la zona.
-          </p>
-          <p class="card-desc">
-            Esta es la primera iniciativa mundial para este proposito, para que las personas de la comunidad se eduquen y cuiden los animales que los rodean fomentando el no maltrato ni caza a ellos.
-          </p>
-        </div>
-      </div>
+  </div>
+  <div class="parallax-container">
+    <div class="parallax"><img src="app/images/img_1_parallax.JPG"></div>
+  </div>
+  <div class="section white">
+    <div class="row container">
+      <h2 class="header">Misión</h2>
+      <p class="grey-text text-darken-3 lighten-3">Monitoreo comunitario de la Península de Osa, para la preservación de la naturaleza.</p>
     </div>
+  </div>
   </ion-content>
 </ion-view>

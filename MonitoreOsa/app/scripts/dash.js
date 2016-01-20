@@ -8,4 +8,6 @@ angular.module('MonitoreOsa.dash', ['ionic'])
   };
   init();
 
+.controller('DashCtrl', function($scope) {
+     $('.parallax').parallax();
 });
