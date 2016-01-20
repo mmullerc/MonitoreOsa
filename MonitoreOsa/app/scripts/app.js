@@ -46,7 +46,7 @@ $stateProvider
   })
   .state('iniciar-sesion', {
     cache: false,
-    url: '/inciar-sesion',
+    url: '/iniciar-sesion',
     templateUrl: 'templates/iniciar-session.html',
     controller: 'iniciar-sesionCtrl'
   })

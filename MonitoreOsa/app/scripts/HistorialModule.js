@@ -1,13 +1,6 @@
 angular.module('MonitoreOsa.Historial', [])
 .controller('HistorialCtrl', function($scope, $ionicModal, $state, DBAvistamientos) {
 
-  var init = function () {
-  if(localStorage.getItem("nombre") == null){
-      $state.go("iniciar-sesion");
-    }
-  };
-  init();
-
   $scope.listaEspecies = {};
 
     $scope.verInfoHistorial = function(){

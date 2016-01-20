@@ -2,14 +2,11 @@ angular.module('MonitoreOsa.Avistamientos', [])
 
 .controller('NuevoCtrl', function($scope, $ionicPopover, $state, $pouchDB, $timeout, TodosAnimales) {
 
-  var init = function () {
   if(localStorage.getItem("nombre") == null){
       $state.go("iniciar-sesion");
     }
-  };
-  init();
 
-  $pouchDB.getAll();
+  // $pouchDB.getAll();
 
   $scope.nuevoAvistamiento = function(){
 

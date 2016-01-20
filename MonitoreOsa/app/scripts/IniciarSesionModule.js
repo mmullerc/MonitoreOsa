@@ -1,7 +1,6 @@
 angular.module('MonitoreOsa.IniciarSesion', [])
 
 .controller('iniciar-sesionCtrl', function($rootScope,$http,$scope, $ionicModal, $state,$ionicPopup) {
-    $('.parallax').parallax();
 
   $scope.ingresar = function(){
     $http.get("https://mmullerc.cloudant.com/usuarios_movil/"+$scope.correo+"")
@@ -40,7 +39,6 @@ angular.module('MonitoreOsa.IniciarSesion', [])
        if(res) {
          $state.go('iniciar-sesion');
        } else {
-         console.log('You are not sure');
        }
      });
    };
