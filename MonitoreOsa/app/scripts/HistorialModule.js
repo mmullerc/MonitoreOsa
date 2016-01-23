@@ -1,14 +1,14 @@
 angular.module('MonitoreOsa.Historial', [])
-.controller('HistorialCtrl', function($scope, $ionicModal, $state, DBAvistamientos) {
+.controller('HistorialCtrl', function($scope, $ionicModal, $state, DBAvistamientos, TempHistorial) {
 
-  $scope.listaEspecies = {};
+  $scope.historial = {};
 
     $scope.verInfoHistorial = function(){
       $state.go('info-historial');
     }
 
-  $scope.listaEspecies = DBAvistamientos.getListaHistorial();
-  console.log($scope.listaEspecies);
+  $scope.historial = DBAvistamientos.getListaHistorial();
+  $scope.historialTemp = TempHistorial.getHistoTemp();
 
 })
 .controller('info-historialCtrl', function($scope, $ionicModal, $state) {

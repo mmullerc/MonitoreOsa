@@ -61,4 +61,46 @@ angular.module('MonitoreOsa.PouchService', [])
          }
 
 
+})
+.service('ServerEspecies', function() {
+
+  var service = {};
+
+         return{
+
+             getEspeciesServidor: function(){
+
+                 return service;
+             },
+
+             setEspeciesServidor: function(value){
+
+                 service = value;
+
+             }
+
+         }
+
+
+})
+.service('TempHistorial', function() {
+
+  var service = [];
+
+         return{
+
+             getHistoTemp: function(){
+
+                 return service;
+             },
+
+             setHistoTemp: function(value){
+
+                 service.push(value);
+
+             }
+
+         }
+
+
 });

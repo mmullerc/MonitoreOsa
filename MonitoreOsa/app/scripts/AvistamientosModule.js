@@ -2,9 +2,11 @@ angular.module('MonitoreOsa.Avistamientos', [])
 
 .controller('NuevoCtrl', function($scope, $ionicPopover, $state, $pouchDB, $timeout, TodosAnimales) {
 
-  if(localStorage.getItem("nombre") == null){
-      $state.go("iniciar-sesion");
-    }
+  //  alert("adios!");
+
+  // if(localStorage.getItem("nombre") == null){
+  //     $state.go("iniciar-sesion");
+  //   }
 
   // $pouchDB.getAll();
 
@@ -77,26 +79,22 @@ angular.module('MonitoreOsa.Avistamientos', [])
 
 })
 .controller('EspeciesCtrl', function($scope, $rootScope, $state, $ionicPopup,
-   AnimalService, $timeout, AnimalTipoService,TodosAnimales) {
-
-    var listaMamiferosTerrestres;
-    var listaMamiferosAcuaticos;
-    var listaAnfibiosTerrestres;
-    var listaAnfibiosAcuaticos;
-    var listaAves;
-    var listaPlantas;
-    var cont = 0;
-
-    $scope.listaEspecies = {};
-
-  //  $scope.listaEspecies = $sqlService.getEspecies();
-    var animales = TodosAnimales.getAnimales();
+   AnimalService, $timeout, AnimalTipoService,TodosAnimales, ServerEspecies) {
 
     var listaEspecies = {};
 
-    listaEspecies = animales;
+    listaEspecies = TodosAnimales.getAnimales();
 
-  //  var blob = $scope.listaEspecies[0].imagen;
+    var size = 0, key;
+    for (key in listaEspecies) {
+        if (listaEspecies.hasOwnProperty(key)) size++;
+    }
+
+    if(size == 0){
+      listaEspecies = ServerEspecies.getEspeciesServidor();
+    }
+
+    $scope.listaEspecies = {};
 
     for(var key in listaEspecies){
 
@@ -137,7 +135,7 @@ angular.module('MonitoreOsa.Avistamientos', [])
         }
 })
 .controller('RegistroEspecieCtrl', function($scope, $state, $filter, AnimalService,
-  $rootScope, DBAvistamientos, Camera, $ionicPopup) {
+  $rootScope, DBAvistamientos, Camera, $ionicPopup, TempHistorial) {
 
       var avistamiento = {};
       $scope.especie = {};
@@ -173,6 +171,8 @@ angular.module('MonitoreOsa.Avistamientos', [])
            }
            _id = new Date().toISOString();
            DBAvistamientos.save(_id,avistamiento);
+
+           TempHistorial.setHistoTemp(avistamiento);
 
          }, function(err) {
            var confirmPopup = $ionicPopup.alert({

@@ -82,7 +82,6 @@ angular.module('MonitoreOsa.DBAvistamientos', [])
         okType: 'button-assertive',
         okText: 'Aceptar',
       });
-
     });
   }
 

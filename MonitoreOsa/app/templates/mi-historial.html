@@ -10,11 +10,18 @@
         <h2 class="balanced">Avistamientos</h2>
       </div>
     </div>
-      <div class="list card" ng-repeat="avis in listaEspecies">
-          <a class="item item-text-wrap" ng-click="registrarEspecie(especie)">
+      <div class="list card" ng-repeat="avis in historial">
+          <a class="item item-text-wrap">
               <h2>{{avis.avistamiento.avistamiento}}</h2>
               <h2>{{avis.avistamiento.fecha}}</h2>
               <h2>{{avis.avistamiento.hora}}</h2>
+          </a>
+      </div>
+      <div class="list card" ng-repeat="temp in historialTemp">
+          <a class="item item-text-wrap">
+              <h2>{{temp.avistamiento}}</h2>
+              <h2>{{temp.fecha}}</h2>
+              <h2>{{temp.hora}}</h2>
           </a>
       </div>
   </ion-content>

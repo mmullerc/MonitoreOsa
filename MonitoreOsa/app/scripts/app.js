@@ -17,14 +17,15 @@ angular.module('MonitoreOsa', ['ionic','MonitoreOsa.inicio','MonitoreOsa.Avistam
     if(window.StatusBar) {
       StatusBar.styleLightContent();
     }
-    $pouchDB.setDatabase();
-    $pouchDB.getAll();
-    DBAvistamientos.setDatabase();
-    DBAvistamientos.getAll();
       //$sqlService.setDatabase();
   });
 
-  $rootScope.$apply();
+    $pouchDB.setDatabase();
+    DBAvistamientos.setDatabase();
+
+    $pouchDB.getAll();
+    DBAvistamientos.getAll();
+
   //$sqlService.getEspecies();
 })
 

@@ -7,10 +7,10 @@
         <a class="icon ion-android-menu icon-menu" ng-click="openModal()" ng-controller="MenuCtrl"></a>
     </ion-nav-buttons>
  </ion-nav-bar>
- <ion-content has-header="true" class="profile-bg">
-      <div id="content">
-        <div id="profile-info">
-          <img id="desc-image" src="{{especie.imagen}}">
+ <ion-content  padding="false" class="profile-bg">
+      <div class="row">
+        <div class="especie-img-col col-75">
+          <img class="especie-img"  src="{{especie.imagen}}" />
           <h3 id="profile-name">{{especie.nombre}}</h3>
           <p class="balanced">
             {{especie.nombre_cientifico}}
@@ -31,10 +31,8 @@
           {{especie.habitat}}
         </p>
       </div>
-      <div class="card-especie">
-      <button class="button button-block button-balanced" ng-click="registrarEspecie()">
-        Registrar
-       </button>
-    </div>
+      <div class="bar bar-footer bar-balanced">
+        <div ng-click="registrarEspecie()" class="title">Footer</div>
+      </div>
     </ion-content>
 </ion-view>
