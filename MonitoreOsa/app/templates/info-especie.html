@@ -9,7 +9,7 @@
  </ion-nav-bar>
  <ion-content  padding="false" class="profile-bg">
       <div class="row">
-        <div class="especie-img-col col-75">
+        <div class="especie-img-col col">
           <img class="especie-img"  src="{{especie.imagen}}" />
           <h3 id="profile-name">{{especie.nombre}}</h3>
           <p class="balanced">
@@ -31,8 +31,8 @@
           {{especie.habitat}}
         </p>
       </div>
-      <div class="bar bar-footer bar-balanced">
-        <div ng-click="registrarEspecie()" class="title">Footer</div>
-      </div>
+      <button class="bar button button-balanced" ng-click="registrarEspecie()">
+        Registrar
+      </button>
     </ion-content>
 </ion-view>

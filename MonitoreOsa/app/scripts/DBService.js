@@ -1,6 +1,6 @@
 angular.module('MonitoreOsa.DBService', [])
-.service("$pouchDB", ["$rootScope", "$q","TodosAnimales","$log","$ionicLoading","$http","ServerEspecies",
-  function($rootScope, $q,TodosAnimales, $log, $ionicLoading, $http, ServerEspecies) {
+.service("$pouchDB", ["$rootScope", "$q","TodosAnimales","$log","$ionicLoading","$http","ServerEspecies","$timeout",
+  function($rootScope, $q,TodosAnimales, $log, $ionicLoading, $http, ServerEspecies,$timeout) {
 
     var database;
     var changeListener;
@@ -44,12 +44,28 @@ angular.module('MonitoreOsa.DBService', [])
       }).then(function (result) {
         localDocs = result.total_rows;
         if(online == true){
+          checkDeleted();
           checkRemote();
         }
       }).catch(function (err) {
         console.log(err);
       });
   }
+
+
+function checkDeleted(){
+
+  $http.get("https://mmullerc.cloudant.com/especies/_changes").then(function(response) {
+    for(var i = 0; i < response.data.results.length; i++){
+      if(response.data.results[i].deleted == true){
+        database.get(response.data.results[i].id).then(function (doc) {
+          return database.remove(doc);
+        });
+      }
+    }
+  });
+
+}
 
 /**
  * Por algun motivo POUCHDB no estaba replicando bien, se intento hacer
@@ -248,11 +264,13 @@ angular.module('MonitoreOsa.DBService', [])
 
           TodosAnimales.setAnimales(listaEspecies);
 
-          $ionicLoading.hide();
-          console.log("Ready!");
+          $timeout(function() {
+            $ionicLoading.hide();
+            console.log("Ready!");
+          }, 3000);
 
           return listaEspecies;
-        }
+      }
 
     /**
      * Busca la imagen de la especie

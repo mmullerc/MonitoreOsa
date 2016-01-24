@@ -1,5 +1,5 @@
 <ion-view view-title="Mi historial">
-  <ion-nav-bar class="bar bar-balanced">
+  <ion-nav-bar class="bar histo-bar">
     <ion-nav-buttons side="secondary">
         <a class="icon ion-android-menu icon-menu" ng-click="openModal()" ng-controller="MenuCtrl"></a>
     </ion-nav-buttons>
@@ -7,21 +7,23 @@
   <ion-content class="profile-bg-2">
     <div class="card">
       <div class="item item-text-wrap centro">
-        <h2 class="balanced">Avistamientos</h2>
+        <h2 class="balanced">Mis Avistamientos</h2>
       </div>
     </div>
       <div class="list card" ng-repeat="avis in historial">
-          <a class="item item-text-wrap">
+          <a class="item item-text-wrap historial-card balanced">
+            <span  class="icons-cards ion-ios-eye-outline"></span>
               <h2>{{avis.avistamiento.avistamiento}}</h2>
-              <h2>{{avis.avistamiento.fecha}}</h2>
-              <h2>{{avis.avistamiento.hora}}</h2>
+              <h3>{{avis.avistamiento.fecha}}</h3>
+              <h3>{{avis.avistamiento.hora}}</h3>
           </a>
       </div>
       <div class="list card" ng-repeat="temp in historialTemp">
-          <a class="item item-text-wrap">
+          <a class="item item-text-wrap historial-card">
+            <span  class="icons-cards ion-ios-eye-outline"></span>
               <h2>{{temp.avistamiento}}</h2>
-              <h2>{{temp.fecha}}</h2>
-              <h2>{{temp.hora}}</h2>
+              <h3>{{temp.fecha}}</h3>
+              <h3>{{temp.hora}}</h3>
           </a>
       </div>
   </ion-content>
