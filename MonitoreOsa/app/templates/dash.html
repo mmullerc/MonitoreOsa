@@ -1,13 +1,50 @@
 <ion-view view-title="MonitoreOsa">
-  <ion-nav-bar class="bar bar-balanced">
+  <ion-nav-bar class="bar back-color-primary text-color-white">
     <ion-nav-buttons side="secondary">
         <a class="icon ion-android-menu icon-menu" ng-controller="MenuCtrl" ng-click="openModal()" ></a>
     </ion-nav-buttons>
  </ion-nav-bar>
   <ion-content ng-controller="DashCtrl" padding="false">
-    <div class="row" style="height:200px; background-color:red">
-        <p>Testing</p>
+    <div class="row panel panel-primary">
+      <h2>¡Bienvenido!</h2>
+      <p>¡Gracias por formar parte de MonitoreOsa!</p>
+    </div>
+    <div class="row panel panel-secondary">
+      <h3>Bahía Drake</h3>
+    </div>
+    <div class="row panel panel-tertiary">
+      <p><span class="text-primary-color">MONITOREOSA</span> es una aplicación de servicio comunitario para el compartimiento de avistamientos de especies en la Península de Osa. <br>
+      Haga parte de la familia <span class="text-primary-color">MONITOREOSA</span>, desarrolla tu red, y juntos tomamos la dirección de un desarrollo sin destrucción.</p>
+    </div>
+    <div class="row panel panel-quaternary">
+      <h3>Corcovado</h3>
+    </div>
+    <div class="row panel panel-quinary">
+      <h3><span class="text-secondary-color">Misión</span></h3>
+      <p>Desarrollar una red lúdica y atractiva para que todos los ciudadanos y organizaciones hagan
+        parte del monitoreo ecológico de la península de Osa al
+        recopilando datos y fotos de lo que pueden observar en su medio ambiente.</p>
+    </div>
+    <div class="row panel panel-senary" >
+      <h3>Cabo Matapalo</h3>
+    </div>
+    <div class="row panel panel-septenary">
+      <h3><span class="text-secondary-color">Visión</span></h3>
+      <p>Los socios de MONITOREOSA hacen parte de una plataforma participativa y democrática.
+        Involucrarse como socio lleva diferentes derechos y deberes, pero todos los usuarios de la aplicación recibirán informaciones
+        y actualizaciones sobre los proyectos llevados a cabo, que sean socios o no.</p>
+    </div>
+    <div class="row panel panel-octonary">
+      <div class="col">
+        <button ng-click="nuevoAvistamiento()" class="button icon-right ion-chevron-right  button-block button-outline btn-avistamiento">
+            Colaboradores
+        </button>
+        <button ng-click="nuevoAvistamiento()" class="button icon-right ion-chevron-right  button-block button-outline btn-avistamiento">
+          Desarrolladores
+        </button>
+        <p>&copy; MonitoreOsa derechos reservados 2016</p>
       </div>
+    </div>
     </div>
   </ion-content>
 </ion-view>

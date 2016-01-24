@@ -320,10 +320,31 @@ padding-top: 20px !important;
   position: fixed;
   z-index: -1;
 }
-.login-form {
-  margin-top: 15em;
+/* go avistamiento html*/
+.avistamiento-bg {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../images/avistamiento-min.jpg") no-repeat center center fixed;
+  /*-webkit-filter: blur(4px);*/
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  position: fixed;
+  z-index: -1;
+}
+.titulo-avistamiento{
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  margin-top: 7em !important;
+  padding-bottom: 0.6em;
+}
+.btn-avistamiento{
+  border-color: white !important;
+  color: white !important;
+  font-size: 21px !important;
+
 }
 
+/* End avistamiento html*/
 /*Login END*/
 
 /*SignUp START*/
@@ -558,3 +579,117 @@ padding-top: 20px !important;
   float:right;
   font-size:45px;
 }
+/*Go ashboard color: #BDBDBD;*/
+.panel{
+  height: 160px;
+  width: 100%;
+  /*background-color: #ecefff*/;
+}
+.panel h1, h2, h3, p{
+  color: #BDBDBD;
+}
+/*Welcome*/
+.panel-primary{
+  height: 135px;
+  text-align: center;
+  display: inline-block;
+  padding-top: 2.7em;
+}
+/*Image*/
+.panel-secondary{
+  width:100%;
+  height:160px;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../images/panel-secondary.JPG") no-repeat center center;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  z-index: -1;
+}
+.panel-secondary h3{
+  padding-left: 5.6em;
+  padding-top: 3.6em;
+}
+
+/*What is?*/
+.panel-tertiary{
+  display: inline-block;
+  text-align: justify;
+  padding-top: 60px;
+}
+.panel-tertiary p{
+  padding-top: 1.4em;
+}
+/*Image*/
+.panel-quaternary{
+  width:100%;
+  height:160px;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../images/corcovado.jpg") no-repeat center center;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  z-index: -1;
+}
+.panel-quaternary h3{
+  padding-left: 5.6em;
+  padding-top: 3.6em;
+}
+/*Mision*/
+.panel-quinary{
+  display: inline-block;
+}
+.panel-quinary h3{
+  padding-top: 1.4em;
+  text-align: left;
+}
+.panel-quinary p{
+  text-align: justify;
+}
+/*Image*/
+.panel-senary{
+  width:100%;
+  height:160px;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../images/matapalo.jpg") no-repeat center center;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  z-index: -1;
+}
+.panel-senary h3{
+  padding-left: 5.6em;
+  padding-top: 3.6em;
+}
+/*Vision*/
+.panel-septenary{
+  display: inline-block;
+}
+.panel-septenary h3{
+  padding-top: 0.6em;
+  text-align: left;
+}
+  .panel-septenary p{
+  text-align: justify;
+}
+/*Colaborators, developers*/
+.panel-octonary{
+    background-color: #263238;
+    text-align: center;
+}
+
+/*End dashboard*/
+/*Colos*/
+.text-primary-color{
+  color: #52c578;
+}
+.text-secondary-color{
+  color: #65cb87;
+}
+.text-color-white{
+  color: white;
+}
+.back-color-primary{
+  background-color: #52c578;
+}
+.back-color-secondary{
+  background-color: #65cb87;
+}
+/*End color*/
