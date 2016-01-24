@@ -4,9 +4,9 @@ angular.module('MonitoreOsa.Avistamientos', [])
 
   //  alert("adios!");
 
-  // if(localStorage.getItem("nombre") == null){
-  //     $state.go("iniciar-sesion");
-  //   }
+  if(localStorage.getItem("nombre") == null){
+      $state.go("iniciar-sesion");
+    }
 
   // $pouchDB.getAll();
 
