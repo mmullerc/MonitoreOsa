@@ -12,26 +12,26 @@
         <div class="especie-img-col col">
           <img class="especie-img"  src="{{especie.imagen}}" />
           <h3 id="profile-name">{{especie.nombre}}</h3>
-          <p class="balanced">
+          <p class="text-secondary-color">
             {{especie.nombre_cientifico}}
           </p>
         </div>
       </div>
-      <div class="card">
-        <h4 class="balanced">Descripción</h4>
+      <div class="card custom-card">
+        <h4 class="text-secondary-color">Descripción</h4>
         <br>
-        <p class="letColor justificado">
+        <p class="letColor justificado text-color-primary">
           {{especie.descripcion}}
         </p>
       </div>
-      <div class="card">
-        <h4 class="balanced">Hábitat</h4>
+      <div class="card custom-card">
+        <h4 class="text-secondary-color">Hábitat</h4>
         <br>
-        <p class="letColor justificado">
+        <p class="letColor justificado text-color-primary">
           {{especie.habitat}}
         </p>
       </div>
-      <button class="bar button button-balanced" ng-click="registrarEspecie()">
+      <button class="bar button back-color-primary text-color-white" ng-click="registrarEspecie()">
         Registrar
       </button>
     </ion-content>

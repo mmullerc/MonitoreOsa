@@ -245,7 +245,7 @@ padding-top: 20px !important;
   }
 }
 .nuevo-avistamiento{
-  background-color:#66cc33;
+  background-color:#65cb87;
   border-color:#33cd5f;
   text-align:left;
 
@@ -309,6 +309,7 @@ padding-top: 20px !important;
   text-align: center;
   color: #AAA;
   font-size: 30px;
+  margin-top: 1em;
 }
 
 .login-bg {
@@ -383,7 +384,13 @@ padding-top: 20px !important;
      margin-top: 90px;
      background-color: white;
      padding-top: 270px;
-      }
+}
+.content-profile {
+    position: relative;
+     margin-top: 90px;
+     background-color: white;
+     padding-top: 195px;
+}
 #content-edit {
   position: relative;
   margin-top: 90px;
@@ -497,7 +504,6 @@ padding-top: 20px !important;
 }
 .justificado{
     text-align: justify;
-    padding: 10px;
 }
 
 /*Parallax*/
@@ -605,7 +611,7 @@ padding-top: 20px !important;
   -o-background-size: cover;
   z-index: -1;
 }
-.panel-secondary h3{
+.panel-secondary p{
   padding-left: 5.6em;
   padding-top: 3.6em;
 }
@@ -629,16 +635,17 @@ padding-top: 20px !important;
   -o-background-size: cover;
   z-index: -1;
 }
-.panel-quaternary h3{
+.panel-quaternary p{
   padding-left: 5.6em;
   padding-top: 3.6em;
 }
 /*Mision*/
 .panel-quinary{
+  height: 180px;
   display: inline-block;
 }
 .panel-quinary h3{
-  padding-top: 1.4em;
+  padding-top: 0.6em;
   text-align: left;
 }
 .panel-quinary p{
@@ -654,13 +661,14 @@ padding-top: 20px !important;
   -o-background-size: cover;
   z-index: -1;
 }
-.panel-senary h3{
+.panel-senary p{
   padding-left: 5.6em;
   padding-top: 3.6em;
 }
 /*Vision*/
 .panel-septenary{
   display: inline-block;
+  height: 180px;
 }
 .panel-septenary h3{
   padding-top: 0.6em;
@@ -678,18 +686,36 @@ padding-top: 20px !important;
 /*End dashboard*/
 /*Colos*/
 .text-primary-color{
-  color: #52c578;
+  color: #52c578 !important;
 }
 .text-secondary-color{
-  color: #65cb87;
+  color: #65cb87 !important;
 }
 .text-color-white{
-  color: white;
+  color: white !important;
 }
 .back-color-primary{
-  background-color: #52c578;
+  background-color: #52c578 !important;
 }
 .back-color-secondary{
-  background-color: #65cb87;
+  background-color: #65cb87 !important;
+}
+.text-color-primary{
+  color: #BDBDBD !important;
 }
 /*End color*/
+.custom-card{
+  border-top: 3px solid #65cb87 !important;
+  color:#AAAAAA;
+}
+.profile-bg{
+    position: fixed;
+    left: 0;
+    width: 100%;
+    background-size: 100%;
+    text-align: center;
+    background-color: #f2f2f2;
+}
+.izquierda{
+  text-align: left;
+}

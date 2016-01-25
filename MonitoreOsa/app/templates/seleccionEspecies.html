@@ -9,7 +9,7 @@
  </ion-nav-bar>
     <ion-content padding="false" class="has-header profile-bg-2">
       <section>
-        <div class="list list-inset card" ng-repeat="especie in listaEspecies">
+        <div class="list list-inset card custom-card" ng-repeat="especie in listaEspecies">
             <a class="item item-avatar item-thumbnail-left" ng-click="registrarEspecie(especie)">
                 <img src="{{especie.imagen}}">
                 <span class="icons-especies icon ion-ios-help-outline" ng-click="infoEspecie(especie);$event.stopPropagation()"></span>

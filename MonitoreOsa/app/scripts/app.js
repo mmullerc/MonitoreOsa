@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('MonitoreOsa', ['ionic','MonitoreOsa.inicio','MonitoreOsa.Avistamientos',
 'MonitoreOsa.Modal','MonitoreOsa.Perfil','MonitoreOsa.Historial','MonitoreOsa.PouchService',
-'MonitoreOsa.DBService','MonitoreOsa.IniciarSesion','MonitoreOsa.DBAvistamientos','MonitoreOsa.Usuarios','MonitoreOsa.dash','ngCordova'])
+'MonitoreOsa.DBService','MonitoreOsa.IniciarSesion','MonitoreOsa.DBAvistamientos','MonitoreOsa.colaboradores','MonitoreOsa.Usuarios','MonitoreOsa.dash','ngCordova'])
 
 .run(function($ionicPlatform, $pouchDB, $rootScope, $timeout, DBAvistamientos) {
   $ionicPlatform.ready(function() {
@@ -98,6 +98,18 @@ $stateProvider
     url: '/info-historial',
     templateUrl: 'templates/info-historial.html',
     controller: 'info-historialCtrl'
+  })
+  .state('colaboradores', {
+    cache: false,
+    url: '/colaboradores',
+    templateUrl: 'templates/colaboradores.html',
+    controller: 'colaboradoresCtrl'
+  })
+  .state('desarrolladores', {
+    cache: false,
+    url: '/desarrolladores',
+    templateUrl: 'templates/desarrolladores.html',
+    controller: 'DashCtrl'
   })
   .state('mi-historial', {
     cache: false,

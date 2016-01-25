@@ -1,10 +1,10 @@
 <ion-view>
   <ion-nav-bar class="bar">
     <ion-nav-buttons side="secondary">
-        <a style="color:#33cd5f" class="icon ion-android-menu icon-menu" ng-click="openModal()" ng-controller="MenuCtrl"></a>
+        <a class="icon ion-android-menu icon-menu text-primary-color" ng-click="openModal()" ng-controller="MenuCtrl"></a>
     </ion-nav-buttons>
  </ion-nav-bar>
-  <ion-nav-title class="titulo-animales balanced">
+  <ion-nav-title class="titulo-animales text-primary-color">
        Registro exitoso
    </ion-nav-title>
   <ion-content padding="false"; class="profile-bg">
@@ -21,7 +21,7 @@
                 </div>
             </div>
           </div>
-          <div class="card">
+          <div class="card custom-card">
             <div class="list">
               <div class="item item-icon-left">
                 <i class="icon ion-ios-close-outline assertive"></i>
@@ -31,54 +31,54 @@
               </div>
             </div>
           </div>
-          <div class="card">
+          <div class="card custom-card">
             <div class="list">
               <div class="item item-divider lef stayli">
-                <h2 class="balanced">Datos de complemento</h2>
+                <h2 class="text-primary-color">Datos de complemento</h2>
               </div>
               <div class="item item-icon-left">
-                <i class="icon ion-ios-camera-outline balanced"></i>
+                <i class="icon ion-ios-camera-outline text-primary-color"></i>
                 <button class="button button-outline button-balanced" ng-click="getPhoto()">
                     Tomar foto
                   </button>
               </div>
 
               <div class="item item-icon-left">
-                <i class="icon ion-image balanced"></i>
+                <i class="icon ion-image text-primary-color"></i>
                 <button class="button button-outline button-balanced" ng-click="getPhotoFromLibrary()">
                     Ingresar imagen
                   </button>
               </div>
               <div class="item item-icon-left">
-                <i class="icon ion-ios-list-outline balanced"></i>
+                <i class="icon ion-ios-list-outline text-primary-color"></i>
                 <button class="button button-outline button-balanced" ng-click="getPhoto()">
                     Ingresar comentario
                   </button>
               </div>
             </div>
           </div>
-          <div class="card">
+          <div class="card custom-card">
             <div class="list">
               <div class="item item-divider lef stayli">
-                <h2 class="balanced">Información del avistamiento</h2>
+                <h2 class="text-primary-color">Información del avistamiento</h2>
               </div>
               <div class="item item-icon-left">
-                <i class="icon ion-ios-paw-outline balanced"></i>
-                <p>
+                <i class="icon ion-ios-paw-outline text-primary-color"></i>
+                <p class="text-color-primary">
                   {{especie.nombre}}
                 </p>
               </div>
 
               <div class="item item-icon-left">
-                <i class="icon ion-ios-calendar-outline balanced"></i>
-                <p>
+                <i class="icon ion-ios-calendar-outline text-primary-color"></i>
+                <p class="text-color-primary">
                   {{fecha}}
                 </p>
               </div>
 
               <div class="item item-icon-left">
-                <i class="icon ion-ios-time-outline balanced"></i>
-                <p>
+                <i class="icon ion-ios-time-outline text-primary-color"></i>
+                <p class="text-color-primary">
                   {{hora}}
                 </p>
               </div>
