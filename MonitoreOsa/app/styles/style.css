@@ -200,8 +200,12 @@ padding-top: 20px !important;
   font-size: 20px;
 }
 #clases {
-    background-color: #222;
-    border-top: 1px solid #333;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../images/fondo-clases.JPG") no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+
+
 }
 .clases-container {
     overflow: auto;
@@ -214,7 +218,6 @@ padding-top: 20px !important;
     width: 33.33%;
     height: 0;
     padding-bottom: 25%;
-    background-color: #fbfbfb;
     text-align: center;
     -webkit-background-size: cover;
     background-size: cover;
@@ -225,7 +228,7 @@ padding-top: 20px !important;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    border: #eeeeee solid 1px;
+    border: white solid 1px;
 }
 .clases-box .info {
     position: absolute;
@@ -681,6 +684,7 @@ padding-top: 20px !important;
 .panel-octonary{
     background-color: #263238;
     text-align: center;
+    height: 217px
 }
 
 /*End dashboard*/
@@ -700,6 +704,9 @@ padding-top: 20px !important;
 .back-color-secondary{
   background-color: #65cb87 !important;
 }
+.back-color-white{
+  background-color: white !important;
+}
 .text-color-primary{
   color: #BDBDBD !important;
 }
@@ -718,4 +725,10 @@ padding-top: 20px !important;
 }
 .izquierda{
   text-align: left;
+}
+.blanco{
+  color:white;
+}
+.text-custom{
+  padding: 0 11px 0 11px;
 }

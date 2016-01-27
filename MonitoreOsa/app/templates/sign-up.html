@@ -1,4 +1,6 @@
 <ion-view view-title="Registrarse">
+  <ion-nav-bar class="bar back-color-primary text-color-white">
+ </ion-nav-bar>
   <ion-content class="login-bg" ng-controller="SignUpCtrl">
     <div class="login-title">
         MonitoreOsa
@@ -6,35 +8,35 @@
       <div class="list list-inset">
         <label class="item item-input item-stacked-label">
           <span class="input-label">Cédula</span>
-          <input type="text"  ng-model="cedula">
+          <input id="cedula" type="text" ng-model="cedula">
         </label>
         <label class="item item-input item-stacked-label">
           <span class="input-label">Nombre</span>
-          <input type="text"  ng-model="nombre">
+          <input id="nombre" type="text" ng-model="nombre">
         </label>
         <label class="item item-input item-stacked-label">
           <span class="input-label">Apellido</span>
-          <input type="text" ng-model="apellido">
+          <input id="apellido" type="text" ng-model="apellido">
         </label>
         <label class="item item-input item-stacked-label">
           <span class="input-label">Correo</span>
-          <input type="text" ng-model="correo">
+          <input id="correo" type=" mail" ng-model="correo">
         </label>
         <label class="item item-input item-stacked-label">
-          <span class="input-label">Teléono</span>
-          <input type="tel" ng-model="telefono">
+          <span class="input-label">Teléfono</span>
+          <input id="telefono" type="tel" ng-model="telefono">
         </label>
         <label class="item item-input item-stacked-label">
           <span class="input-label">Fecha nacimiento</span>
-          <input type="text" placeholder="dd/mm/yy"ng-model="fecha">
+          <input id="fecha" type="text" placeholder="dd/mm/yy"ng-model="fecha">
         </label>
         <label class="item item-input item-stacked-label">
           <span class="input-label">Contraseña</span>
-          <input type="password" ng-model="contrasena">
+          <input id="contrasena" type="password" ng-model="contrasena">
         </label>
       </div>
       <div class="padding-horizontal">
-        <button type="button" name="submitBtn" class="button button-full back-color-primary" ng-click="registrar()">
+        <button type="button" name="submitBtn" class="button button-full back-color-secondary text-color-white" ng-click="registrar()">
           Registrarse
         </button>
       </div>

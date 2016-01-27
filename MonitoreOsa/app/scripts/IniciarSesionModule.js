@@ -1,12 +1,13 @@
 angular.module('MonitoreOsa.IniciarSesion', [])
 
-.controller('iniciar-sesionCtrl', function($rootScope,$http,$scope, $ionicModal, $state,$ionicPopup) {
+.controller('iniciar-sesionCtrl', function($rootScope,$http,$scope, $ionicModal, $state,$ionicPopup,md5) {
 
   $scope.ingresar = function(){
+    var contrasenaHash = md5.createHash($scope.contrasena);
     $http.get("https://mmullerc.cloudant.com/usuarios_movil/"+$scope.correo+"")
     .success(function(response) {
       if(response.status = 200){
-          if(response.contrasena == $scope.contrasena){
+          if(response.contrasena == contrasenaHash){
             localStorage.setItem("id", response._id);
             localStorage.setItem("nombre", response.nombre);
             localStorage.setItem("apellido",response.apellido);
@@ -31,7 +32,7 @@ angular.module('MonitoreOsa.IniciarSesion', [])
   $scope.showConfirm = function() {
      var confirmPopup = $ionicPopup.alert({
        title: '¡Correo o contraseña incorrectos!',
-       okType: 'button-balanced',
+       okType: 'button-assertive',
        okText: 'Aceptar',
      });
 

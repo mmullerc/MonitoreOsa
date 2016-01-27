@@ -1,22 +1,22 @@
 <ion-view title="{{especies}}">
-  <ion-nav-bar class="bar bar-balanced">
-    <ion-nav-back-button>
-      <a class="icon ion-ios-arrow-back back-button"></a> Regresar
-    </ion-nav-back-button>
-    <ion-nav-buttons side="secondary">
-        <a class="icon ion-android-menu icon-menu" ng-click="openModal()" ng-controller="MenuCtrl"></a>
-    </ion-nav-buttons>
- </ion-nav-bar>
-    <ion-content padding="false" class="has-header profile-bg-2">
-      <section>
-        <div class="list list-inset card custom-card" ng-repeat="especie in listaEspecies">
-            <a class="item item-avatar item-thumbnail-left" ng-click="registrarEspecie(especie)">
-                <img src="{{especie.imagen}}">
-                <span class="icons-especies icon ion-ios-help-outline" ng-click="infoEspecie(especie);$event.stopPropagation()"></span>
-                <h2>{{especie.nombre}}</h2>
-                <p>{{especie.nombre_cientifico}}</p>
-            </a>
-        </div>
-      </section>
-    </ion-content>
+ <ion-nav-bar class="bar bar-balanced">
+   <ion-nav-back-button>
+     <a class="icon ion-ios-arrow-back back-button"></a> Regresar
+   </ion-nav-back-button>
+   <ion-nav-buttons side="secondary">
+       <a class="icon ion-android-menu icon-menu" ng-click="openModal()" ng-controller="MenuCtrl"></a>
+   </ion-nav-buttons>
+</ion-nav-bar>
+   <ion-content padding="false" class="has-header profile-bg-2">
+     <section>
+       <div class="list list-inset card custom-card" ng-repeat="especie in listaEspecies">
+           <a class="item item-avatar item-thumbnail-left" ng-click="registrarEspecie(especie)">
+               <img ng-src="{{especie.imagen}}">
+               <span class="icons-especies icon ion-ios-help-outline" ng-click="infoEspecie(especie);$event.stopPropagation()"></span>
+               <h2>{{especie.nombre}}</h2>
+               <p>{{especie.nombre_cientifico}}</p>
+           </a>
+       </div>
+     </section>
+   </ion-content>
 </ion-view>

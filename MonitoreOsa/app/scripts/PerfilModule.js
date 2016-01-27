@@ -1,12 +1,9 @@
 angular.module('MonitoreOsa.Perfil', [])
 .controller('PerfilCtrl', function($scope, $ionicModal, $state) {
 
-  var init = function () {
-  if(localStorage.getItem("nombre") == null){
+  if(localStorage.getItem("id") === null){
       $state.go("iniciar-sesion");
-    }
-  };
-  init();
+  }
 
     $scope.nombre = localStorage.getItem('nombre');
     $scope.apellido = localStorage.getItem('apellido');
@@ -19,5 +16,10 @@ angular.module('MonitoreOsa.Perfil', [])
       $state.go('iniciar-sesion');
       localStorage.setItem('id', null);
       localStorage.setItem('nombre', null);
+      localStorage.setItem('apellido',null);
+      localStorage.setItem('cedula',null);
+      localStorage.setItem('correo',null);
+      localStorage.setItem('telefono',null);
+      localStorage.setItem('fecha',null);
     }
 });

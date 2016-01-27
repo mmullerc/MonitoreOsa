@@ -3,9 +3,21 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('MonitoreOsa', ['ionic','MonitoreOsa.inicio','MonitoreOsa.Avistamientos',
-'MonitoreOsa.Modal','MonitoreOsa.Perfil','MonitoreOsa.Historial','MonitoreOsa.PouchService',
-'MonitoreOsa.DBService','MonitoreOsa.IniciarSesion','MonitoreOsa.DBAvistamientos','MonitoreOsa.colaboradores','MonitoreOsa.Usuarios','MonitoreOsa.dash','ngCordova'])
+angular.module('MonitoreOsa', ['ionic',
+                                'MonitoreOsa.inicio',
+                                'MonitoreOsa.Avistamientos',
+                                'MonitoreOsa.Modal',
+                                'MonitoreOsa.Perfil',
+                                'MonitoreOsa.Historial',
+                                'MonitoreOsa.PouchService',
+                                'MonitoreOsa.DBService',
+                                'MonitoreOsa.IniciarSesion',
+                                'MonitoreOsa.DBAvistamientos',
+                                'MonitoreOsa.colaboradores',
+                                'MonitoreOsa.Usuarios',
+                                'MonitoreOsa.dash',
+                                'angular-md5',
+                                'ngCordova'])
 
 .run(function($ionicPlatform, $pouchDB, $rootScope, $timeout, DBAvistamientos) {
   $ionicPlatform.ready(function() {
@@ -109,6 +121,12 @@ $stateProvider
     cache: false,
     url: '/desarrolladores',
     templateUrl: 'templates/desarrolladores.html',
+    controller: 'DashCtrl'
+  })
+  .state('licencias', {
+    cache: false,
+    url: '/licencias',
+    templateUrl: 'templates/licencias.html',
     controller: 'DashCtrl'
   })
   .state('mi-historial', {
