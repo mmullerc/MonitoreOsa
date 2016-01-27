@@ -1,0 +1,25 @@
+<ion-view view-title="MonitoreOsa">
+  <ion-nav-bar class="bar bar-balanced">
+    <ion-nav-back-button>
+      <a class="icon ion-ios-arrow-back back-button"></a> Regresar
+    </ion-nav-back-button>
+    <ion-nav-buttons side="secondary">
+        <a class="icon ion-android-menu icon-menu" ng-click="openModal()" ng-controller="DashCtrl"></a>
+    </ion-nav-buttons>
+ </ion-nav-bar>
+ <ion-content  ng-controller="DashCtrl" padding="false" class="profile-bg">
+   <div class="card custom-card">
+     <div class="list">
+       <div class="item item-divider lef stayli">
+         <h2 class="balanced">Colaboradores</h2>
+       </div>
+       <div ng-repeat="colaborador in colaborators" class="item item-icon-left izquierda">
+         <i class="icon ion-ios-people-outline balanced"></i>
+         <h3 class="text-color-primary">
+           {{colaborador.nombre}}
+         </h3>
+       </div>
+     </div>
+   </div>
+    </ion-content>
+</ion-view>
