@@ -201,11 +201,6 @@ padding-top: 20px !important;
 }
 #clases {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../images/fondo-clases.JPG") no-repeat center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-
-
 }
 .clases-container {
     overflow: auto;
@@ -318,9 +313,6 @@ padding-top: 20px !important;
 .login-bg {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/fondo.jpeg") no-repeat center center fixed;
   /*-webkit-filter: blur(4px);*/
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
   position: fixed;
   z-index: -1;
 }
@@ -328,9 +320,6 @@ padding-top: 20px !important;
 .avistamiento-bg {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../images/avistamiento-min.jpg") no-repeat center center fixed;
   /*-webkit-filter: blur(4px);*/
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
   position: fixed;
   z-index: -1;
 }
@@ -609,9 +598,6 @@ padding-top: 20px !important;
   width:100%;
   height:160px;
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../images/panel-secondary.JPG") no-repeat center center;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  -o-background-size: cover;
   z-index: -1;
 }
 .panel-secondary p{
@@ -633,9 +619,6 @@ padding-top: 20px !important;
   width:100%;
   height:160px;
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../images/corcovado.jpg") no-repeat center center;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  -o-background-size: cover;
   z-index: -1;
 }
 .panel-quaternary p{
@@ -659,9 +642,6 @@ padding-top: 20px !important;
   width:100%;
   height:160px;
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../images/matapalo.jpg") no-repeat center center;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  -o-background-size: cover;
   z-index: -1;
 }
 .panel-senary p{

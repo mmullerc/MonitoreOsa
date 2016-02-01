@@ -278,7 +278,7 @@ function checkDeleted(){
     function getAttachment(pespecie){
         for(var key in pespecie._attachments){
             database.getAttachment(pespecie._id,key).then(function (blob){
-                var url = URL.createObjectURL(blob);
+                var url = window.webkitURL.createObjectURL(blob);
                   pespecie.imagen = url;
                 });
             }
