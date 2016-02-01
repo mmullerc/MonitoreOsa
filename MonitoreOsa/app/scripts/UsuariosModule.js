@@ -44,7 +44,7 @@ angular.module('MonitoreOsa.Usuarios', [])
 
      confirmPopup.then(function(res) {
        if(res) {
-       } 
+       }
      });
    };
    function addUsuario(){
@@ -69,7 +69,7 @@ angular.module('MonitoreOsa.Usuarios', [])
       "fecha_nacimiento":fecha,
       "contrasena":contrasena
     }
-      $http.post("https://mmullerc.cloudant.com/usuarios_movil/", objUsuario).then(function(response) {
+      $http.post("https://monitoreosa.cloudant.com/usuarios_movil/", objUsuario).then(function(response) {
        $state.go('iniciar-sesion');
      });
     }

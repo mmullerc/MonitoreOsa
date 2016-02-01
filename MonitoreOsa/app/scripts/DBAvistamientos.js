@@ -5,7 +5,7 @@ angular.module('MonitoreOsa.DBAvistamientos', [])
     var esp = {};
     var listaHistorial = {};
     var listaEspecies = {};
-    var remote = "https://mmullerc.cloudant.com/avistamientos/"
+    var remote = "https://monitoreosa.cloudant.com/avistamientos/"
 
     this.setDatabase = function() {
 

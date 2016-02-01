@@ -40,6 +40,6 @@ angular.module('MonitoreOsa.dash', ['ionic'])
                             {'nombre':'Reserva Forestal Golfo Dulce'},
                             {'nombre':'SINAC'},
                             {'nombre':'Universidad de Standford'},
-                            {'nombre':'José Daniel Beita'}
+                            {'nombre':''}
                             ]
 })
