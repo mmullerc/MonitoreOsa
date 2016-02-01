@@ -1,6 +1,6 @@
 angular.module('MonitoreOsa.DBService', [])
-.service("$pouchDB", ["$rootScope", "$q","TodosAnimales","$log","$ionicLoading","$http","ServerEspecies","$timeout","$base64",
-  function($rootScope, $q,TodosAnimales, $log, $ionicLoading, $http, ServerEspecies,$timeout, $base64) {
+.service("$pouchDB", ["$rootScope", "$q","TodosAnimales","$log","$ionicLoading","$http","ServerEspecies","$timeout",
+  function($rootScope, $q,TodosAnimales, $log, $ionicLoading, $http, ServerEspecies,$timeout) {
 
     var database;
     var changeListener;
@@ -151,75 +151,80 @@ function checkDeleted(){
   /**
    * Busca los cambios en el servidor
    */
-  function checkRemote(){
+   function checkRemote(){
 
-    $http.get("https://mmullerc.cloudant.com/especies/_all_docs?&include_docs=true").then(function(response) {
+   $http.get("https://mmullerc.cloudant.com/especies/_all_docs?&include_docs=true").then(function(response) {
 
-      if(localDocs == 0){
-        var listaServer = {};
+     if(localDocs == 0){
+       var listaServer = {};
 
-        for(var i = 0; i<response.data.rows.length; i++){
-          var especie = response.data.rows[i].doc;
-          especie.imagen = 'https://mmullerc.cloudant.com/especies/'+especie._id+'/imagen';
-          listaServer[i] = especie;
-        }
-        ServerEspecies.setEspeciesServidor(listaServer);
-      }
+       for(var i = 0; i<response.data.rows.length; i++){
+         var especie = response.data.rows[i].doc;
+         especie.imagen = 'https://mmullerc.cloudant.com/especies/'+especie._id+'/imagen';
+         listaServer[i] = especie;
+       }
+       ServerEspecies.setEspeciesServidor(listaServer);
+     }
+     //
+     // especiesServer = response.data.rows;
+     //
+     // for(var i = 0; i<especiesServer.length; i++){
+     //   for(var j =0; j<especiesLocales.length;j++){
+     //     if(especiesServer[i]._id == especiesLocales[i]._id){
+     //
+     //     }else{
+     //       listaEspeciesNuevas[i] = response.data.rows[i].doc;
+     //     }
+     //   }
+     // }
 
-      // especiesServer = response.data.rows;
-      //
-      // for(var i = 0; i<especiesServer.length; i++){
-      //   for(var j =0; j<especiesLocales.length;j++){
-      //     if(especiesServer[i]._id == especiesLocales[i]._id){
-      //
-      //     }else{
-      //       listaEspeciesNuevas[i] = response.data.rows[i].doc;
-      //     }
-      //   }
-      // }
+     angular.forEach(response.data.rows,function(especie){
 
-      angular.forEach(response.data.rows,function(especie){
+     var xhr = new XMLHttpRequest();
+     xhr.open('GET', 'https://mmullerc.cloudant.com/especies/'+especie.id+'/imagen', true);
+     xhr.responseType = 'arraybuffer';
 
-      var xhr = new XMLHttpRequest();
-      xhr.open('GET', 'https://mmullerc.cloudant.com/especies/'+especie.id+'/imagen', true);
-      xhr.responseType = 'arraybuffer';
+     xhr.onload = function(e) {
+       if (this.status == 200) {
+         var uInt8Array = new Uint8Array(this.response);
+         var i = uInt8Array.length;
+         var binaryString = new Array(i);
+         while (i--)
+         {
+           binaryString[i] = String.fromCharCode(uInt8Array[i]);
+         }
+         var data = binaryString.join('');
 
-      xhr.onload = function(e) {
-        if (this.status == 200) {
-          var uInt8Array = new Uint8Array(this.response);
-          var i = uInt8Array.length;
-          var binaryString = new Array(i);
-          while (i--)
-          {
-            binaryString[i] = String.fromCharCode(uInt8Array[i]);
-          }
-          var data = binaryString.join('');
+         base64 = window.btoa(data);
 
-          base64 = $base64.encode(data);
+             database.put({
+               "_id":especie.id,
+               "nombre": especie.doc.nombre,
+               "nombre_cientifico": especie.doc.nombre_cientifico,
+               "habitat":especie.doc.habitat,
+               "descripcion": especie.doc.descripcion,
+               "tipo": especie.doc.tipo,
+               "_attachments": {
+                 "imagen": {
+                   "content_type": "image/png",
+                   "data": base64
+                 }
+               }
+             }).then(function (response) {
 
-              database.put({
-                "_id":especie.id,
-                "nombre": especie.doc.nombre,
-                "nombre_cientifico": especie.doc.nombre_cientifico,
-                "habitat":especie.doc.habitat,
-                "descripcion": especie.doc.descripcion,
-                "tipo": especie.doc.tipo,
-                "imagen" : 'https://mmullerc.cloudant.com/especies/'+especie.id+'/imagen'
-              }).then(function (response) {
+           }).catch(function (err) {
+             if(err.status == 409){
 
-            }).catch(function (err) {
-              if(err.status == 409){
-
-              }
-            });
-        }
-      };
-      xhr.send();
-    });
-      }, function (err) {
-        console.err(err);
-      });
-  }
+             }
+           });
+       }
+     };
+     xhr.send();
+   });
+     }, function (err) {
+       console.err(err);
+     });
+ }
 
 
     this.get = function(documentId) {
@@ -251,7 +256,7 @@ function checkDeleted(){
 
             especie = result.rows[i].doc;
 
-            //especie = getAttachment(especie);
+            especie = getAttachment(especie);
 
             listaEspecies[i] = especie;
 

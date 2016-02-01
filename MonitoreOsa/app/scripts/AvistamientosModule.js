@@ -157,6 +157,11 @@ angular.module('MonitoreOsa.Avistamientos', [])
         $scope.fecha = _date;
         $scope.hora = _time;
 
+        var options = {
+          enableHighAccuracy: true,
+          maximumAge: 0
+        };
+
         navigator.geolocation.getCurrentPosition(function(position) {
 
            $scope.latitud = position.coords.latitude;
@@ -182,7 +187,7 @@ angular.module('MonitoreOsa.Avistamientos', [])
            });
            console.log(err.text);
            console.log("no se registro");
-         });
+         }),options;
 
     $scope.getPhoto = function() {
 

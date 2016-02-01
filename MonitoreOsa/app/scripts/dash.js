@@ -19,7 +19,7 @@ angular.module('MonitoreOsa.dash', ['ionic'])
                         ]
 
     $scope.developers = [
-                          {'nombre':'Mathías Muller','correo':' mathias.muller27@gmail.com'},
+                          {'nombre':'Mathias Muller','correo':' mathias.muller27@gmail.com'},
                           {'nombre': 'Mauricio Araica', 'correo':'mauricioher.94@hotmail.com'}
                         ]
     $scope.colaborators = [
@@ -39,7 +39,7 @@ angular.module('MonitoreOsa.dash', ['ionic'])
                             {'nombre':'Reinaldo Aguilar'},
                             {'nombre':'Reserva Forestal Golfo Dulce'},
                             {'nombre':'SINAC'},
-                            {'nombre':'Universidad de Standford'},
-                            {'nombre':''}
+                            {'nombre':'The Bamboo Collective'},
+                            {'nombre':'Universidad de Standford'}
                             ]
 })

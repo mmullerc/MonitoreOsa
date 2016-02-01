@@ -17,8 +17,7 @@ angular.module('MonitoreOsa', ['ionic',
                                 'MonitoreOsa.Usuarios',
                                 'MonitoreOsa.dash',
                                 'angular-md5',
-                                'ngCordova',
-                                'base64'])
+                                'ngCordova'])
 
 .run(function($ionicPlatform, $pouchDB, $rootScope, $timeout, DBAvistamientos) {
   $ionicPlatform.ready(function() {
