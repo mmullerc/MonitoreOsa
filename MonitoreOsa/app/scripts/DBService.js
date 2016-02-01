@@ -1,6 +1,6 @@
 angular.module('MonitoreOsa.DBService', [])
-.service("$pouchDB", ["$rootScope", "$q","TodosAnimales","$log","$ionicLoading","$http","ServerEspecies","$timeout",
-  function($rootScope, $q,TodosAnimales, $log, $ionicLoading, $http, ServerEspecies,$timeout) {
+.service("$pouchDB", ["$rootScope", "$q","TodosAnimales","$log","$ionicLoading","$http","ServerEspecies","$timeout","$base64",
+  function($rootScope, $q,TodosAnimales, $log, $ionicLoading, $http, ServerEspecies,$timeout, $base64) {
 
     var database;
     var changeListener;
@@ -165,7 +165,7 @@ function checkDeleted(){
         }
         ServerEspecies.setEspeciesServidor(listaServer);
       }
-      //
+
       // especiesServer = response.data.rows;
       //
       // for(var i = 0; i<especiesServer.length; i++){
@@ -195,7 +195,7 @@ function checkDeleted(){
           }
           var data = binaryString.join('');
 
-          base64 = window.btoa(data);
+          base64 = $base64.encode(data);
 
               database.put({
                 "_id":especie.id,
@@ -204,12 +204,7 @@ function checkDeleted(){
                 "habitat":especie.doc.habitat,
                 "descripcion": especie.doc.descripcion,
                 "tipo": especie.doc.tipo,
-                "_attachments": {
-                  "imagen": {
-                    "content_type": "image/png",
-                    "data": base64
-                  }
-                }
+                "imagen" : 'https://mmullerc.cloudant.com/especies/'+especie.id+'/imagen'
               }).then(function (response) {
 
             }).catch(function (err) {
@@ -256,7 +251,7 @@ function checkDeleted(){
 
             especie = result.rows[i].doc;
 
-            especie = getAttachment(especie);
+            //especie = getAttachment(especie);
 
             listaEspecies[i] = especie;
 
@@ -278,7 +273,7 @@ function checkDeleted(){
     function getAttachment(pespecie){
         for(var key in pespecie._attachments){
             database.getAttachment(pespecie._id,key).then(function (blob){
-                var url = URL.createObjectURL(blob);
+                var url = window.URL.createObjectURL(blob);
                   pespecie.imagen = url;
                 });
             }

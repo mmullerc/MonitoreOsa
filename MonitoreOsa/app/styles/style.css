@@ -200,12 +200,7 @@ padding-top: 20px !important;
   font-size: 20px;
 }
 #clases {
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../images/fondo-clases.JPG") no-repeat center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-
-
+  background-color: white;
 }
 .clases-container {
     overflow: auto;
@@ -228,7 +223,7 @@ padding-top: 20px !important;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    border: white solid 1px;
+    border: #f2f2f2 solid 1px;
 }
 .clases-box .info {
     position: absolute;
@@ -310,13 +305,13 @@ padding-top: 20px !important;
 /*Login START*/
 .login-title{
   text-align: center;
-  color: #AAA;
+  color: white;
   font-size: 30px;
   margin-top: 1em;
 }
 
 .login-bg {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/fondo.jpeg") no-repeat center center fixed;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/fondo.jpeg') no-repeat center center fixed;
   /*-webkit-filter: blur(4px);*/
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -338,7 +333,7 @@ padding-top: 20px !important;
   text-align: center;
   color: white;
   font-size: 30px;
-  margin-top: 7em !important;
+  margin-top: 0.7em !important;
   padding-bottom: 0.6em;
 }
 .btn-avistamiento{
@@ -354,7 +349,7 @@ padding-top: 20px !important;
 /*SignUp START*/
 .signup-btn{
   text-align: center;
-  color: #AAA;
+  color: white;
   font-size: 16px;
 }
 
@@ -605,19 +600,10 @@ padding-top: 20px !important;
   padding-top: 2.7em;
 }
 /*Image*/
-.panel-secondary{
-  width:100%;
-  height:160px;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../images/panel-secondary.JPG") no-repeat center center;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  -o-background-size: cover;
-  z-index: -1;
+.panel2 {
+  background-color: #b0bec5;
 }
-.panel-secondary p{
-  padding-left: 5.6em;
-  padding-top: 3.6em;
-}
+
 
 /*What is?*/
 .panel-tertiary{
@@ -707,6 +693,9 @@ padding-top: 20px !important;
 .back-color-white{
   background-color: white !important;
 }
+.back-color-grey{
+  background-color: #f2f2f2;
+}
 .text-color-primary{
   color: #BDBDBD !important;
 }
@@ -731,4 +720,17 @@ padding-top: 20px !important;
 }
 .text-custom{
   padding: 0 11px 0 11px;
+}
+.img-avistamiento{
+  width: 150px;
+  display: block;
+  width: 120px;
+  height: 120px;
+  margin: 60px auto 0;
+}
+.img-dashi{
+  display: block;
+  width: 120px;
+  height: 120px;
+  margin: 20px auto 0;
 }
