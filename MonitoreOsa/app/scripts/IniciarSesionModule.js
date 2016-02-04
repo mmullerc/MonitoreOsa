@@ -4,7 +4,7 @@ angular.module('MonitoreOsa.IniciarSesion', [])
 
   $scope.ingresar = function(){
     var contrasenaHash = md5.createHash($scope.contrasena);
-    $http.get("https://mmullerc.cloudant.com/usuarios_movil/"+$scope.correo+"")
+    $http.get("https://monitoreosa.cloudant.com/usuarios_movil/"+$scope.correo+"")
     .success(function(response) {
       if(response.status = 200){
           if(response.contrasena == contrasenaHash){

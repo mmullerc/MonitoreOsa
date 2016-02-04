@@ -55,7 +55,7 @@ angular.module('MonitoreOsa.DBService', [])
 
 function checkDeleted(){
 
-  $http.get("https://mmullerc.cloudant.com/especies/_changes").then(function(response) {
+  $http.get("https://monitoreosa.cloudant.com/especies/_changes").then(function(response) {
     for(var i = 0; i < response.data.results.length; i++){
       if(response.data.results[i].deleted == true){
         database.get(response.data.results[i].id).then(function (doc) {
@@ -85,14 +85,14 @@ function checkDeleted(){
   //     console.log(err);
   //   });
   //
-  //   $http.get("https://mmullerc.cloudant.com/especies/").then(function(response) {
+  //   $http.get("https://monitoreosa.cloudant.com/especies/").then(function(response) {
   //
   //     serverSize = response.data.disk_size;
   //     serverDocCount = response.data.doc_count;
   //
   //     if(serverDocCount < localDocs){
   //
-  //       $http.get("https://mmullerc.cloudant.com/especies/_changes").then(function(response) {
+  //       $http.get("https://monitoreosa.cloudant.com/especies/_changes").then(function(response) {
   //
   //         for(var i = 0; i < response.data.results.length; i++){
   //           if(response.data.results[i].deleted == true){
@@ -153,14 +153,14 @@ function checkDeleted(){
    */
   function checkRemote(){
 
-    $http.get("https://mmullerc.cloudant.com/especies/_all_docs?&include_docs=true").then(function(response) {
+    $http.get("https://monitoreosa.cloudant.com/especies/_all_docs?&include_docs=true").then(function(response) {
 
       if(localDocs == 0){
         var listaServer = {};
 
         for(var i = 0; i<response.data.rows.length; i++){
           var especie = response.data.rows[i].doc;
-          especie.imagen = 'https://mmullerc.cloudant.com/especies/'+especie._id+'/imagen';
+          especie.imagen = 'https://monitoreosa.cloudant.com/especies/'+especie._id+'/imagen';
           listaServer[i] = especie;
         }
         ServerEspecies.setEspeciesServidor(listaServer);
@@ -181,7 +181,7 @@ function checkDeleted(){
       angular.forEach(response.data.rows,function(especie){
 
       var xhr = new XMLHttpRequest();
-      xhr.open('GET', 'https://mmullerc.cloudant.com/especies/'+especie.id+'/imagen', true);
+      xhr.open('GET', 'https://monitoreosa.cloudant.com/especies/'+especie.id+'/imagen', true);
       xhr.responseType = 'arraybuffer';
 
       xhr.onload = function(e) {

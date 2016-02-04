@@ -39,7 +39,7 @@ angular.module('MonitoreOsa.dash', ['ionic'])
                             {'nombre':'Reinaldo Aguilar'},
                             {'nombre':'Reserva Forestal Golfo Dulce'},
                             {'nombre':'SINAC'},
+                            {'nombre':'The Bamboo Collective'},
                             {'nombre':'Universidad de Standford'},
-                            {'nombre':'José Daniel Beita'}
                             ]
 })

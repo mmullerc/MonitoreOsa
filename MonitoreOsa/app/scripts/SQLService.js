@@ -11,7 +11,7 @@ angular.module('MonitoreOsa.SQLService', [])
       db.executeSql("DROP TABLE IF EXISTS especies");
       $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS especies (id integer primary key, nombre text, nombre_cientifico text, descripcion text, tipo text, imagen text)");
 
-      $http.get("https://mmullerc.cloudant.com/especies/_all_docs?&include_docs=true").then(function(response) {
+      $http.get("https://monitoreosa.cloudant.com/especies/_all_docs?&include_docs=true").then(function(response) {
         for(var i = 0; i < response.data.rows.length; i++){
           especie = response.data.rows[i].doc;
 
