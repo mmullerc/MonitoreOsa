@@ -1,6 +1,11 @@
 angular.module('MonitoreOsa.Usuarios', [])
 
-.controller('SignUpCtrl', function($http, $scope, $state,md5,$ionicPopup) {
+.controller('SignUpCtrl', function($http, $scope, $state,md5,$ionicPopup, $timeout, $rootScope) {
+
+  var contrasenasDif;
+  var correoValido;
+  var contrasenaValidar;
+  var contrasenaConfirmarValidar;
 
   $scope.registrar = function(){
     var entro = false;
@@ -9,44 +14,84 @@ angular.module('MonitoreOsa.Usuarios', [])
     var apellidoValidar = document.getElementById("apellido").value;
     var correoValidar = document.getElementById("correo").value;
     var telefonoValidar = document.getElementById("telefono").value;
-    var contrasenaValidar = document.getElementById("contrasena").value;
+    var contrasenasDif = false;
+    var correoValido = false;
+    contrasenaValidar = document.getElementById("contrasena").value;
+    contrasenaConfirmarValidar = document.getElementById("contrasena-confirmar").value;
 
-    if(cedulaValidar == ''){
-      entro = true;
+    function validateEmail(correo) {
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(correo);
     }
-    if(nombreValidar == ''){
-      entro = true;
-    }
-    if(apellidoValidar == ''){
-      entro = true;
-    }
-    if(correoValidar == ''){
-      entro = true;
-    }
-    if(telefonoValidar == ''){
-      entro = true;
-    }
-    if(contrasenaValidar == ''){
-      entro = true;
-    }
-    if(entro == false){
-      addUsuario();
+
+    correoValido = validateEmail(correoValidar);
+
+    if(correoValido){
+
+      if(checkPassowrds()){
+
+        if(cedulaValidar == ''){
+          entro = true;
+        }
+        if(nombreValidar == ''){
+          entro = true;
+        }
+        if(apellidoValidar == ''){
+          entro = true;
+        }
+        if(correoValidar == ''){
+          entro = true;
+        }
+        if(telefonoValidar == ''){
+          entro = true;
+        }
+        if(contrasenaValidar == ''){
+          entro = true;
+        }
+        if(entro == true){
+          $scope.showError('Por favor llene todos los campos');
+        }
+        if(entro == false && contrasenasDif == false && correoValido == true){
+          addUsuario();
+        }else{
+
+        }
+      }
     }else{
-      $scope.showConfirm();
+      checkEmail();
     }
   }
-  $scope.showConfirm = function() {
-     var confirmPopup = $ionicPopup.alert({
-       title: '¡Porfavor llene los campos!',
-       okType: 'button-assertive',
-       okText: 'Aceptar',
-     });
 
-     confirmPopup.then(function(res) {
-       if(res) {
-       }
-     });
-   };
+  $scope.showError= function(err) {
+
+      var popup = $ionicPopup.show({
+        title: err,
+        buttons: [{
+          text: 'OK',
+          type: 'button-balanced',
+          onTap: function(e) {
+            popup.then(function(res){
+              popup.close();
+            });
+          }
+        }]
+      });
+  }
+
+  function checkEmail(){
+      $scope.showError('Por favor ingrese un correo válido');
+    }
+
+  function checkPassowrds(){
+    if(contrasenaValidar != contrasenaConfirmarValidar ){
+      contrasenasDif = true;
+      $scope.showError('¡Las contraseñas no son iguales!');
+      return false;
+    }else{
+      return true;
+    }
+  }
+
    function addUsuario(){
       var id = $scope.correo;
       var cedula = $scope.cedula;
@@ -70,7 +115,26 @@ angular.module('MonitoreOsa.Usuarios', [])
       "contrasena":contrasena
     }
       $http.post("https://monitoreosa.cloudant.com/usuarios_movil/", objUsuario).then(function(response) {
-       $state.go('iniciar-sesion');
-     });
+
+          var popup = $ionicPopup.alert({
+              title: 'Registro exitoso',
+              buttons: [{
+                text: 'Aceptar',
+                type: 'button-balanced',
+                onTap: function(e) {
+                  popup.then(function(res){
+                    popup.close();
+                  });
+                }
+              }]
+            })
+
+        $state.go('iniciar-sesion');
+
+      }).catch(function (err) {
+        if(err.status == 409){
+          $scope.showError('Ese correo ya existe en el sistema');
+        }
+      });
     }
 });
